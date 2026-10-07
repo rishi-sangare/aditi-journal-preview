@@ -6,6 +6,7 @@ This is a preview for feedback, not the final site. Photos, the handwriting font
 
 Round one (desk journal): https://rishi-sangare.github.io/aditi-journal-preview/
 Round two (four black-and-white directions): https://rishi-sangare.github.io/aditi-journal-preview/round-2/
+Round three (the notebook, drawn live, and a session): https://rishi-sangare.github.io/aditi-journal-preview/notebook/
 
 ## Credits
 - Pencil-on-paper recordings: [BigSoundBank](https://bigsoundbank.com) #221, #3234, #3235 by Joseph Sardin, CC0.
