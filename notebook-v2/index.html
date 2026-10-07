@@ -1,0 +1,568 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<meta name="robots" content="noindex,nofollow">
+<style>[hidden]{display:none!important}</style>
+</head>
+<body>
+<title>Aditi Mishra Notebook</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Bodoni+Moda:ital,opsz,wght@0,6..96,400..700;1,6..96,400..700&family=Instrument+Sans:wght@400;500&family=IBM+Plex+Mono:wght@400;500&family=Caveat:wght@500;600;700&display=swap" rel="stylesheet">
+<style>
+/* Layout: one long sketchbook sheet travelling sideways under a pinned frame. A red thread runs through every page; each page tilts and separates into layers as it passes the camera. */
+:root{
+  --paper:#F5F4F0; --paper-2:#ECEBE6; --ink:#141413; --graphite:#262624; --soft:#5E5D59; --faint:#A3A19B; --line:rgba(20,20,19,.13);
+  --red:#B32B22;
+  --display:"Bodoni Moda","Didot","Bodoni 72",Georgia,serif;
+  --body:"Instrument Sans",system-ui,-apple-system,"Segoe UI",sans-serif;
+  --mono:"IBM Plex Mono",ui-monospace,"SF Mono",Menlo,monospace;
+  --hand:"Caveat","Bradley Hand","Segoe Print",cursive;
+  --ease:cubic-bezier(.16,1,.3,1);
+  --grain:url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='200' height='200'><filter id='n'><feTurbulence type='fractalNoise' baseFrequency='.9' numOctaves='3' stitchTiles='stitch'/><feColorMatrix values='0 0 0 0 0  0 0 0 0 0  0 0 0 0 0  0 0 0 .065 0'/></filter><rect width='100%' height='100%' filter='url(%23n)'/></svg>");
+  color-scheme:light;
+}
+*{box-sizing:border-box}
+html{-webkit-text-size-adjust:100%}
+body{margin:0;background:var(--paper) var(--grain);color:var(--ink);font:16px/1.6 var(--body);overflow-x:hidden}
+::selection{background:var(--ink);color:var(--paper)}
+:focus-visible{outline:2px solid var(--ink);outline-offset:3px}
+h1,h2,h3{margin:0;font-weight:400;text-wrap:balance}
+p{margin:0}
+.mono{font:500 11px/1.4 var(--mono);letter-spacing:.1em;text-transform:uppercase}
+
+/* ---------- stage chrome ---------- */
+.stage{position:relative;height:100vh;height:100svh;overflow:hidden;background:var(--paper)}
+.track{position:absolute;inset:0 auto 0 0;display:flex;will-change:transform;
+  background:radial-gradient(circle,rgba(20,20,19,.1) 0 .9px,transparent 1.3px) 0 0/22px 22px,var(--grain)}
+.bar{position:absolute;left:0;right:0;top:0;padding:calc(18px + env(safe-area-inset-top,0px)) clamp(16px,3.4vw,44px) 0;display:flex;justify-content:space-between;align-items:baseline;gap:16px;z-index:20}
+.bar .name{font:400 22px/1 var(--display);opacity:0;transition:opacity .4s}
+.bar .name.on{opacity:1}
+.bar .name em{font-style:italic}
+.bar .count{font:400 26px/1 var(--display);font-style:italic;font-variant-numeric:tabular-nums;min-width:2.5ch;text-align:right}
+.chapters{display:flex;gap:clamp(10px,1.6vw,22px);list-style:none;margin:0;padding:0}
+.chapters button{background:none;border:0;padding:4px 0;font:500 10.5px/1 var(--mono);letter-spacing:.1em;text-transform:uppercase;color:var(--faint);cursor:pointer;position:relative;transition:color .25s}
+.chapters button:hover,.chapters button.on{color:var(--ink)}
+.chapters button::after{content:"";position:absolute;left:0;right:0;bottom:-3px;height:1.5px;background:var(--red);transform:scaleX(0);transform-origin:left;transition:transform .35s var(--ease)}
+.chapters button.on::after{transform:scaleX(1)}
+@media (max-width:900px){.chapters{display:none}}
+.progress{position:absolute;left:0;right:0;bottom:0;height:2px;z-index:20;background:var(--line)}
+.progress i{position:absolute;inset:0;background:var(--ink);transform-origin:left;transform:scaleX(0)}
+
+/* the red thread */
+.thread{position:absolute;left:0;top:0;height:100%;pointer-events:none;z-index:0;overflow:visible}
+.thread path{fill:none;stroke:var(--red);stroke-width:1.8;stroke-linecap:round;stroke-linejoin:round}
+.thread .bead{fill:var(--red)}
+.thread .halo{fill:var(--red);opacity:.16}
+
+/* ---------- pages ---------- */
+.plate{flex:none;width:100vw;height:100%;position:relative;z-index:1}
+.sheet{position:absolute;inset:0;display:grid;grid-template-columns:minmax(0,.82fr) minmax(0,1.5fr);align-items:center;gap:clamp(20px,3vw,48px);padding:clamp(70px,11vh,110px) clamp(16px,4vw,60px) clamp(96px,16vh,150px);transform-origin:50% 50%;will-change:transform,opacity}
+.plate .txt{display:grid;gap:14px;max-width:380px;will-change:transform}
+.plate .num{font:400 clamp(56px,7vw,104px)/.8 var(--display);font-style:italic}
+.plate h2{font:400 clamp(30px,3.4vw,50px)/1 var(--display)}
+.plate h2 em{font-style:italic}
+.plate p{color:var(--soft);font-size:15.5px;line-height:1.55;max-width:34ch}
+.plate .art{min-width:0;height:100%;display:grid;place-items:center}
+.plate .art svg{width:100%;height:100%;max-height:calc(100svh - 230px);overflow:visible}
+.rise{opacity:0;transform:translateY(16px);transition:opacity .35s var(--ease) var(--d,0s),transform .5s var(--ease) var(--d,0s)}
+.on .rise{opacity:1;transform:none}
+@media (max-width:760px){
+  .sheet{grid-template-columns:minmax(0,1fr);grid-template-rows:auto minmax(0,1fr);align-items:start;padding:72px 18px 110px;gap:4px}
+  .plate .txt{gap:6px}
+  .plate .num{font-size:44px}
+  .plate h2{font-size:28px}
+  .plate p{font-size:14px;max-width:none}
+  .plate .art svg{max-height:56svh}
+}
+
+/* the opening page */
+.hero .sheet{display:block;padding:0}
+.hero-in{position:absolute;inset:0;display:grid;place-items:center;text-align:center}
+.hero-name{font:400 clamp(64px,13.5vw,220px)/.84 var(--display);letter-spacing:-.025em;position:relative;z-index:2}
+.hero-name em{font-style:italic}
+.hero-name .w{display:inline-block;overflow:hidden;vertical-align:top;padding:0 .02em .08em}
+.hero-name .c{display:inline-block;transform:translateY(105%);transition:transform .7s var(--ease) var(--d,0s)}
+.hero.go .hero-name .c{transform:none}
+.hero-k{position:absolute;left:50%;top:calc(50% - clamp(70px,10vw,150px));transform:translateX(-50%);color:var(--soft);opacity:0;transition:opacity .5s .5s;white-space:nowrap}
+.hero-sub{position:absolute;left:50%;top:calc(50% + clamp(64px,9vw,140px));transform:translateX(-50%);font-size:clamp(15px,1.5vw,19px);color:var(--soft);opacity:0;transition:opacity .5s .8s;white-space:nowrap}
+.hero.go .hero-k,.hero.go .hero-sub{opacity:1}
+.hero-doodles{position:absolute;inset:0;width:100%;height:100%;pointer-events:none;overflow:visible}
+.hero-doodles g{will-change:transform}
+.hero-doodles .ink,.hero-doodles .red{transition:stroke-dashoffset .6s var(--ease) var(--d,0s)}
+.hero.go .hero-doodles .ink,.hero.go .hero-doodles .red{stroke-dashoffset:0}
+.hero-doodles text{font-family:var(--hand);font-weight:600;fill:var(--graphite);opacity:0;transition:opacity .4s var(--d,0s)}
+.hero-doodles text.r{fill:var(--red)}
+.hero.go .hero-doodles text{opacity:1}
+.hero-hint{position:absolute;right:clamp(16px,4vw,60px);bottom:clamp(80px,12vh,120px);display:flex;align-items:center;gap:10px;color:var(--soft);opacity:0;transition:opacity .5s 1.6s}
+.hero.go .hero-hint{opacity:1}
+@media (max-width:760px){.hero-sub{white-space:normal;width:86vw}.hero-k{font-size:10px}.hero-doodles{display:none}}
+
+/* drawn things */
+.ink,.ghost,.red{fill:none;stroke-linecap:round;stroke-linejoin:round;stroke-dasharray:1;stroke-dashoffset:1}
+.ink{stroke:var(--graphite);stroke-width:1.7}
+.ghost{stroke:var(--graphite);stroke-width:1.1;opacity:.28}
+.red{stroke:var(--red);stroke-width:2.3}
+.hw{font-family:var(--hand);font-weight:600;fill:var(--graphite)}
+.hw.r{fill:var(--red)}
+.ty{font-family:var(--mono);font-weight:500;letter-spacing:.09em;fill:var(--soft)}
+.dot{fill:var(--graphite);transform-box:fill-box;transform-origin:center;transform:scale(0);transition:transform .2s cubic-bezier(.3,1.8,.5,1)}
+.dot.on{transform:scale(1)}
+.dot.emb{fill:#fbfaf6;stroke:rgba(0,0,0,.35);stroke-width:.8;filter:drop-shadow(.8px 1.2px .6px rgba(0,0,0,.35))}
+.nub{fill:rgba(20,20,19,.08)}
+.stampG{opacity:0;transform-box:fill-box;transform-origin:center;transform:scale(1.7) rotate(-14deg);transition:opacity .1s,transform .26s cubic-bezier(.5,0,.7,1.5)}
+.stampG.on{opacity:.9;transform:scale(1) rotate(-14deg)}
+.stampG circle{fill:none;stroke:var(--red)}
+.stampG text{fill:var(--red);font-family:var(--mono);font-weight:500;letter-spacing:.12em;text-anchor:middle}
+
+/* ---------- session ---------- */
+.session .track{background:var(--paper-2) var(--grain)}
+.session .bar .name{opacity:1}
+.session .bar .count{font-size:clamp(34px,4vw,56px)}
+.s-panel{flex:none;width:min(52vw,640px);height:100%;padding:clamp(90px,15vh,140px) clamp(16px,3vw,40px) 0;position:relative}
+.s-panel:first-child{width:min(70vw,860px);padding-left:clamp(16px,4vw,60px)}
+.s-panel .t{font:500 12px var(--mono);letter-spacing:.12em;color:var(--red)}
+.s-panel h3{font:400 clamp(34px,4.4vw,64px)/.95 var(--display);margin:10px 0 14px}
+.s-panel h3 em{font-style:italic}
+.s-panel p{color:var(--soft);font-size:16px;max-width:30ch}
+.s-panel blockquote{margin:16px 0 0;font:600 clamp(22px,2.2vw,28px)/1.15 var(--hand);color:var(--graphite);max-width:22ch}
+.s-panel .big{font:400 clamp(44px,6vw,92px)/.92 var(--display)}
+.s-panel .big em{font-style:italic}
+@media (max-width:760px){.s-panel{width:84vw;padding-top:92px}.s-panel:first-child{width:92vw}}
+.room{position:absolute;left:50%;bottom:calc(60px + env(safe-area-inset-bottom,0px));transform:translateX(-50%);width:min(980px,96vw);z-index:5;pointer-events:none}
+.room svg{width:100%;height:auto;overflow:visible}
+.after{padding:clamp(56px,9vw,110px) clamp(16px,4vw,60px);display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr);gap:40px;align-items:end;border-top:1px solid var(--line)}
+.after h2{font:400 clamp(44px,7vw,100px)/.9 var(--display)}
+.after h2 em{font-style:italic}
+.after p{color:var(--soft);max-width:42ch}
+.after .crisis{margin-top:18px;font-size:14px}
+@media (max-width:760px){.after{grid-template-columns:minmax(0,1fr)}}
+@media (prefers-reduced-motion:reduce){.rise,.hero-name .c,.hero-k,.hero-sub,.hero-hint,.hero-doodles text{opacity:1;transform:none;transition:none}.dot,.stampG{transition:none}}
+</style>
+
+<!-- ================= THE NOTEBOOK ================= -->
+<section class="stage" id="nb" aria-label="Aditi Mishra's notebook">
+  <div class="bar"><span class="name" id="nbName">Aditi <em>Mishra</em></span><ul class="chapters" id="nbChapters"></ul><span class="count" id="nbCount"></span></div>
+  <div class="track" id="nbTrack">
+    <svg class="thread" id="thread" aria-hidden="true"><path id="threadPath"/><circle class="halo" id="halo" r="9"/><circle class="bead" id="bead" r="3.6"/></svg>
+    <article class="plate hero" id="hero" data-name="">
+      <div class="sheet">
+        <div class="hero-in">
+          <span class="mono hero-k">A listening notebook · Navi Mumbai · 2026</span>
+          <h1 class="hero-name" aria-label="Aditi Mishra"><span class="w" data-split>Aditi</span> <em class="w" data-split>Mishra</em></h1>
+          <p class="hero-sub">Psychology graduate, training to become a counsellor.</p>
+        </div>
+        <svg class="hero-doodles" id="heroDoodles" viewBox="0 0 1000 600" preserveAspectRatio="xMidYMid meet" aria-hidden="true"></svg>
+        <span class="hero-hint mono">her notebook <span style="font-size:16px">→</span></span>
+      </div>
+    </article>
+    <article class="plate" data-name="About">
+      <div class="sheet"><div class="txt"><span class="num rise">I</span><span class="mono rise" style="--d:.04s">About · Navi Mumbai</span><h2 class="rise" style="--d:.08s">Aditi <em>Mishra</em></h2><p class="rise" style="--d:.12s">Applied Psychology graduate from NMIMS, training on a mental-health helpline and heading into a Master's in Counselling.</p></div>
+      <div class="art"><svg viewBox="0 0 640 520" data-plate="about" role="img" aria-label="Hand-written introduction: hi, I'm Aditi. Psychology graduate, NMIMS 2025. On a mental-health helpline, now. Next, a Master's in Counselling."></svg></div></div>
+    </article>
+    <article class="plate" data-name="Helpline">
+      <div class="sheet"><div class="txt"><span class="num rise">II</span><span class="mono rise" style="--d:.04s">Practice · Oct 2025 — now</span><h2 class="rise" style="--d:.08s">Vandrevala <em>Foundation</em></h2><p class="rise" style="--d:.12s">Training and assessments with practising psychologists, observing counselling and crisis-intervention work on a 24/7 helpline.</p></div>
+      <div class="art"><svg viewBox="0 0 640 520" data-plate="helpline" role="img" aria-label="Drawing of a headset with sound waves. Notes: listen first, open questions, safety check always, 24/7."></svg></div></div>
+    </article>
+    <article class="plate" data-name="Hospital">
+      <div class="sheet"><div class="txt"><span class="num rise">III</span><span class="mono rise" style="--d:.04s">Practice · May — Jun 2024</span><h2 class="rise" style="--d:.08s">Regional Mental <em>Hospital</em>, Thane</h2><p class="rise" style="--d:.12s">A 45-day observership under Dr Netaji B. Mulik, Medical Superintendent. Graded Excellent.</p></div>
+      <div class="art"><svg viewBox="0 0 640 520" data-plate="hospital" role="img" aria-label="Drawing of a hospital corridor, 45 tally marks, and a red stamp reading Excellent."></svg></div></div>
+    </article>
+    <article class="plate" data-name="Training">
+      <div class="sheet"><div class="txt"><span class="num rise">IV</span><span class="mono rise" style="--d:.04s">Practice · 2025</span><h2 class="rise" style="--d:.08s">ManoBodh &amp; <em>Therapy4uss</em></h2><p class="rise" style="--d:.12s">60 hours of clinical training with RCI-licensed psychologists, then three months of case discussions and mock sessions, graded A+.</p></div>
+      <div class="art"><svg viewBox="0 0 640 520" data-plate="training" role="img" aria-label="A ticked checklist of clinical skills, Gibbs' reflective cycle, and A plus circled in red."></svg></div></div>
+    </article>
+    <article class="plate" data-name="Care">
+      <div class="sheet"><div class="txt"><span class="num rise">V</span><span class="mono rise" style="--d:.04s">Care · Jul 2025 — Jul 2026</span><h2 class="rise" style="--d:.08s">Blind &amp; Cancer <em>Care</em></h2><p class="rise" style="--d:.12s">A year of psychosocial support and companionship for patients who are blind, visually impaired or living with cancer.</p></div>
+      <div class="art"><svg viewBox="0 0 640 520" data-plate="care" role="img" aria-label="Drawing of a bed by a window with a chair beside it. The word care in raised Braille dots. Note: sitting beside, mostly listening."></svg></div></div>
+    </article>
+    <article class="plate" data-name="People">
+      <div class="sheet"><div class="txt"><span class="num rise">VI</span><span class="mono rise" style="--d:.04s">People · 2025 — 26</span><h2 class="rise" style="--d:.08s"><em>Rotaract</em> Samaritans</h2><p class="rise" style="--d:.12s">As Training, Revival &amp; Sustenance Chair she designed Inside the Inbox, a team session on feedback and tone, run through emails.</p></div>
+      <div class="art"><svg viewBox="0 0 640 520" data-plate="people" role="img" aria-label="Three envelopes labelled thank you, reframe, tone, and her words: when people feel safe, they open up."></svg></div></div>
+    </article>
+    <article class="plate" data-name="Learning">
+      <div class="sheet"><div class="txt"><span class="num rise">VII</span><span class="mono rise" style="--d:.04s">Learning · 2024 — 25</span><h2 class="rise" style="--d:.08s">Courses &amp; <em>certificates</em></h2><p class="rise" style="--d:.12s">Psychological First Aid, Positive Psychiatry, Suicide Prevention, Organizational Analysis, and more.</p></div>
+      <div class="art"><svg viewBox="0 0 640 520" data-plate="learning" role="img" aria-label="Six certificate seals: Johns Hopkins, University of Sydney, Wesleyan, Stanford, QPR Institute, Therapy4uss."></svg></div></div>
+    </article>
+  </div>
+  <div class="progress"><i id="nbProg"></i></div>
+</section>
+
+<!-- ================= A SESSION ================= -->
+<section class="stage session" id="ss" aria-label="A session, as she is learning it">
+  <div class="bar"><span class="name">A <em>session</em></span><span class="mono" style="color:var(--soft)">as she's learning it</span><span class="count" id="ssClock">00:00</span></div>
+  <div class="track" id="ssTrack">
+    <div class="s-panel"><p class="big">Two chairs,<br><em>fifty minutes.</em></p><p style="margin-top:18px">How a first conversation is shaped in her training. Keep scrolling, and the room fills in.</p></div>
+    <div class="s-panel"><span class="t">00:00</span><h3><em>Welcome</em></h3><p>Introductions, and what stays private. Confidentiality is explained before anything else.</p></div>
+    <div class="s-panel"><span class="t">05:00</span><h3><em>Listening</em></h3><p>"What brings you here today?" Then mostly quiet, and attention.</p></div>
+    <div class="s-panel"><span class="t">15:00</span><h3>Open <em>questions</em></h3><p>"How did that feel?" rather than "Was that hard?" Questions that leave room.</p></div>
+    <div class="s-panel"><span class="t">25:00</span><h3>Reflecting <em>back</em></h3><p>Saying back what she heard, so the person can hear it too.</p><blockquote>"It wasn't labeling, it was clarity."</blockquote></div>
+    <div class="s-panel"><span class="t">40:00</span><h3>A small <em>next step</em></h3><p>Not advice. One thing to notice or try before next time.</p></div>
+    <div class="s-panel"><span class="t">50:00</span><h3><em>Closing</em></h3><p>Checking how the person is leaving. Safety first, always.</p><blockquote>"When people feel safe, they open up."</blockquote></div>
+  </div>
+  <div class="room"><svg viewBox="0 0 900 280" id="room" aria-hidden="true"></svg></div>
+  <div class="progress"><i id="ssProg"></i></div>
+</section>
+
+<section class="after">
+  <h2>Write to <em>Aditi</em></h2>
+  <div>
+    <p>For internships, study, or a conversation about counselling. She is in training and doesn't offer sessions yet.</p>
+    <p class="crisis mono" style="text-transform:none;letter-spacing:.02em">If you are struggling right now: Tele-MANAS, free and 24/7 in India, 14416.</p>
+  </div>
+</section>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js"></script>
+<script src="https://unpkg.com/lenis@1.1.13/dist/lenis.min.js"></script>
+<script>
+(() => {
+const $ = (s, r = document) => r.querySelector(s), $$ = (s, r = document) => [...r.querySelectorAll(s)];
+const NS = 'http://www.w3.org/2000/svg';
+const reduce = matchMedia('(prefers-reduced-motion: reduce)').matches;
+if (!window.gsap || !window.ScrollTrigger) return;
+gsap.registerPlugin(ScrollTrigger);
+
+let lenis = null;
+if (!reduce && window.Lenis && !/nolenis/.test(location.search)) {
+  lenis = new Lenis({ lerp: .12, smoothWheel: true });
+  lenis.on('scroll', ScrollTrigger.update);
+  gsap.ticker.add((t) => lenis.raf(t * 1000));
+  gsap.ticker.lagSmoothing(0);
+}
+
+/* ================= hand-drawn primitives (seeded, so every visit draws the same lines) ================= */
+let seed = 11; const rnd = () => ((seed = (seed * 16807) % 2147483647) / 2147483647);
+const f = (n) => (+n).toFixed(1);
+function smooth(pts, closed = false) { // Catmull-Rom through points, as cubic Béziers
+  const P = closed ? [pts[pts.length - 1], ...pts, pts[0], pts[1]] : [pts[0], ...pts, pts[pts.length - 1]];
+  let d = `M${f(P[1][0])} ${f(P[1][1])}`;
+  for (let i = 1; i < P.length - 2; i++) {
+    const [p0, p1, p2, p3] = [P[i - 1], P[i], P[i + 1], P[i + 2]];
+    d += ` C ${f(p1[0] + (p2[0] - p0[0]) / 6)} ${f(p1[1] + (p2[1] - p0[1]) / 6)}, ${f(p2[0] - (p3[0] - p1[0]) / 6)} ${f(p2[1] - (p3[1] - p1[1]) / 6)}, ${f(p2[0])} ${f(p2[1])}`;
+  }
+  return d;
+}
+const H = {
+  line(x1, y1, x2, y2, bow = .03) { const dx = x2 - x1, dy = y2 - y1, L = Math.hypot(dx, dy) || 1, b = (rnd() - .5) * Math.min(12, L * bow); return `M${f(x1)} ${f(y1)} Q ${f((x1 + x2) / 2 - dy / L * b)} ${f((y1 + y2) / 2 + dx / L * b)} ${f(x2)} ${f(y2)}`; },
+  poly(pts, close = false) { let d = `M${f(pts[0][0] + (rnd() - .5) * 1.5)} ${f(pts[0][1] + (rnd() - .5) * 1.5)}`; const Q = close ? [...pts.slice(1), pts[0]] : pts.slice(1);
+    Q.forEach(([x, y]) => (d += ` L ${f(x + (rnd() - .5) * 1.4)} ${f(y + (rnd() - .5) * 1.4)}`));
+    if (close) { const [a, b] = [pts[0], pts[1]]; d += ` L ${f(a[0] + (b[0] - a[0]) * .08)} ${f(a[1] + (b[1] - a[1]) * .08)}`; } return d; },
+  rect(x, y, w, h) { return H.poly([[x, y], [x + w, y], [x + w, y + h], [x, y + h]], true); },
+  rrect(x, y, w, h, r) { const pts = []; const c = [[x + w - r, y + r, -90], [x + w - r, y + h - r, 0], [x + r, y + h - r, 90], [x + r, y + r, 180]];
+    c.forEach(([cx, cy, a0]) => { for (let k = 0; k <= 4; k++) { const a = (a0 + k * 22.5) * Math.PI / 180; pts.push([cx + Math.cos(a) * r, cy + Math.sin(a) * r]); } }); pts.push(pts[0], pts[1]); return smooth(pts); },
+  loop(cx, cy, rx, ry = rx, over = .1, a0 = -2.2) { const pts = [], n = 30; for (let i = 0; i <= n; i++) { const t = a0 + (i / n) * Math.PI * 2 * (1 + over), w = 1 + Math.sin(i * .9 + rnd()) * .02 + (i / n) * .04; pts.push([cx + Math.cos(t) * rx * w, cy + Math.sin(t) * ry * w]); } return smooth(pts); },
+  arc(cx, cy, r, a0, a1) { const pts = []; for (let i = 0; i <= 10; i++) { const a = (a0 + (a1 - a0) * i / 10) * Math.PI / 180; pts.push([cx + Math.cos(a) * r, cy + Math.sin(a) * r]); } return smooth(pts); },
+  curve(pts) { return smooth(pts); },
+  wave(x1, y, x2, amp = 3.5) { const pts = []; const n = Math.max(4, Math.round((x2 - x1) / 18)); for (let i = 0; i <= n; i++) pts.push([x1 + (x2 - x1) * i / n, y + (i % 2 ? amp : -amp) * (.6 + rnd() * .5)]); return smooth(pts); },
+  arrow(x1, y1, x2, y2, bend = .25) { const dx = x2 - x1, dy = y2 - y1, mx = (x1 + x2) / 2 - dy * bend, my = (y1 + y2) / 2 + dx * bend;
+    const body = `M${f(x1)} ${f(y1)} Q ${f(mx)} ${f(my)} ${f(x2)} ${f(y2)}`; const a = Math.atan2(y2 - my, x2 - mx), s = 11;
+    const head = `M${f(x2 - Math.cos(a - .5) * s)} ${f(y2 - Math.sin(a - .5) * s)} L ${f(x2)} ${f(y2)} L ${f(x2 - Math.cos(a + .5) * s)} ${f(y2 - Math.sin(a + .5) * s)}`; return [body, head]; },
+  star(cx, cy, r) { const pts = []; for (let i = 0; i <= 5; i++) { const a = -Math.PI / 2 + i * Math.PI * 4 / 5; pts.push([cx + Math.cos(a) * r, cy + Math.sin(a) * r]); } return H.poly(pts); },
+  tick(x, y, s = 22) { return `M${f(x)} ${f(y)} L ${f(x + s * .36)} ${f(y + s * .34)} L ${f(x + s)} ${f(y - s * .62)}`; },
+  scallop(cx, cy, r, n = 20) { const pts = []; for (let i = 0; i < n * 2; i++) { const a = i / (n * 2) * Math.PI * 2, rr = i % 2 ? r * .9 : r; pts.push([cx + Math.cos(a) * rr, cy + Math.sin(a) * rr]); } return smooth(pts, true); }
+};
+
+/* ================= the drawings, in the order a pencil would make them ================= */
+const P = (d, o = {}) => ({ t: 'p', d, ...o });
+const W = (x, y, text, s = 30, o = {}) => ({ t: 'w', x, y, text, s, ...o });
+const T = (x, y, text, s = 11, o = {}) => ({ t: 't', x, y, text, s, ...o });
+const DRAW = {
+  about() {
+    return [
+      W(36, 140, "hi, I'm Aditi.", 82, { id: 'hi' }),
+      { t: 'under', ref: 'hi' },
+      P(H.line(40, 248, 58, 248)), W(68, 256, 'psychology graduate, NMIMS 2025', 30),
+      P(H.line(40, 302, 58, 302)), W(68, 310, 'on a mental-health helpline', 30), W('after', 310, 'now', 30, { id: 'now', r: 1 }), { t: 'ring', ref: 'now', red: 1 },
+      P(H.line(40, 356, 58, 356)), W(68, 364, "next: a Master's in Counselling", 30, { id: 'next' }), { t: 'star', ref: 'next' },
+      P(H.rrect(60, 396, 170, 70, 34)), P(H.poly([[102, 466], [86, 492], [128, 466]])),
+      { t: 'dot', x: 114, y: 431, r: 5.5 }, { t: 'dot', x: 145, y: 431, r: 5.5 }, { t: 'dot', x: 176, y: 431, r: 5.5 },
+      P(H.rrect(262, 410, 182, 68, 32)), P(H.poly([[412, 478], [436, 500], [392, 478]])),
+      W(288, 454, 'mm, go on', 28),
+      T(470, 512, 'PLATE I · 2026', 11)
+    ];
+  },
+  helpline() {
+    const items = [
+      P('M206 266 C 200 160, 254 116, 304 116 C 354 116, 408 160, 402 266'),
+      P('M220 266 C 216 174, 262 132, 304 132 C 346 132, 392 174, 388 266'),
+      P(H.rrect(172, 244, 50, 88, 20)), P(H.loop(197, 288, 10, 26, .05)),
+      P(H.rrect(386, 244, 50, 88, 20)), P(H.loop(411, 288, 10, 26, .05)),
+      P(H.curve([[414, 330], [410, 372], [372, 396], [326, 398]])), P(H.rrect(296, 386, 30, 22, 11)),
+      P(H.arc(300, 397, 18, 150, 210)), P(H.arc(300, 397, 31, 145, 215)), P(H.arc(300, 397, 44, 140, 220)),
+      W(40, 92, 'listen first', 34, { id: 'listen' })
+    ];
+    const [a, h] = H.arrow(150, 104, 190, 236, .28); items.push(P(a, { note: 1 }), P(h, { note: 1 }));
+    items.push(W(470, 108, '24/7', 46, { id: '247' }), { t: 'ring', ref: '247', red: 1 },
+      W(460, 300, 'open questions', 28), W(460, 344, 'safety check,', 28), W(460, 380, 'always', 28, { id: 'always' }), { t: 'under', ref: 'always', red: 1 },
+      T(40, 470, 'VANDREVALA FOUNDATION  ·  OCT 2025 → NOW', 11));
+    return items;
+  },
+  hospital() {
+    const items = [
+      P(H.rect(56, 60, 336, 262)), P(H.rect(196, 152, 60, 52)),
+      P(H.line(56, 60, 196, 152, .01)), P(H.line(392, 60, 256, 152, .01)), P(H.line(56, 322, 196, 204, .01)), P(H.line(392, 322, 256, 204, .01)),
+      P(H.poly([[92, 100], [130, 124], [130, 252], [92, 278]])), P(H.poly([[148, 136], [170, 148], [170, 222], [148, 234]])),
+      P(H.poly([[356, 100], [318, 124], [318, 252], [356, 278]])), P(H.poly([[300, 136], [278, 148], [278, 222], [300, 234]])),
+      P(H.loop(226, 92, 26, 6, .02)), P(H.loop(226, 122, 15, 4, .02))
+    ];
+    for (let k = 1; k <= 4; k++) items.push(P(H.line(56 + k * 67, 322, 196 + k * 12, 204, .01)));
+    let x = 60;
+    for (let g = 0; g < 9; g++) { for (let j = 0; j < 4; j++) { const xx = x + j * 8; items.push(P(H.line(xx, 374 + rnd() * 3, xx + 1.5, 410 + rnd() * 3, .02), { light: 1 })); } items.push(P(H.line(x - 5, 404, x + 30, 380, .02), { light: 1 })); x += 40; }
+    items.push(W(430, 100, '45 days', 44, { id: '45' }));
+    const [a, h] = H.arrow(424, 92, 330, 372, .32); items.push(P(a, { note: 1 }), P(h, { note: 1 }));
+    items.push(W(430, 190, 'observership', 30), T(430, 222, 'DR NETAJI B. MULIK', 10.5), T(430, 240, 'MEDICAL SUPERINTENDENT', 10.5),
+      { t: 'stamp', x: 520, y: 404, r: 62, lines: ['THANE', 'EXCELLENT', '2024'] },
+      T(40, 470, 'REGIONAL MENTAL HOSPITAL  ·  MAY — JUN 2024', 11));
+    return items;
+  },
+  training() {
+    const rows = ['case history', 'mental status exam', 'test administration', 'report writing', 'case discussions', 'mock sessions'], items = [];
+    rows.forEach((r, k) => { const y = 74 + k * 54; items.push(P(H.rect(36, y - 24, 26, 26)), W(78, y, r, 29), P(H.tick(39, y - 12, 24))); });
+    items.push(P(H.loop(500, 182, 84, 84, .06, -1.5)), P(H.poly([[490, 90], [502, 98], [490, 106]])));
+    const labels = ['description', 'feelings', 'evaluation', 'analysis', 'conclusion', 'action plan'];
+    labels.forEach((l, k) => { const a = (-90 + k * 60) * Math.PI / 180, x = 500 + Math.cos(a) * 84, y = 182 + Math.sin(a) * 84; items.push({ t: 'dot', x, y, r: 4.5 });
+      const lx = 500 + Math.cos(a) * 100, ly = 182 + Math.sin(a) * 100 + 4; items.push(T(lx, ly, l.toUpperCase(), 9.5, { anchor: Math.abs(Math.cos(a)) < .2 ? 'middle' : Math.cos(a) > 0 ? 'start' : 'end' })); });
+    items.push(W(448, 326, 'Gibbs, 1988', 26), W(474, 420, 'A+', 64, { id: 'ap', r: 1 }), { t: 'ring', ref: 'ap', red: 1 },
+      T(40, 470, 'MANOBODH, 60 HRS · THERAPY4USS, 3 MONTHS', 11));
+    return items;
+  },
+  care() {
+    const items = [
+      P(H.rect(70, 46, 136, 108)), P(H.line(138, 46, 138, 154, .01)), P(H.line(70, 100, 206, 100, .01)),
+      P(H.line(214, 120, 262, 210, .02), { light: 1 }), P(H.line(206, 150, 244, 222, .02), { light: 1 }),
+      P('M84 352 L84 222 C 84 212 92 206 102 206 L 102 270'), P(H.rrect(84, 270, 254, 36, 10)), P(H.line(84, 306, 338, 306, .01)),
+      P(H.line(98, 306, 98, 352, .01)), P(H.line(324, 306, 324, 352, .01)), P(H.loop(140, 262, 32, 11, .03)),
+      P(H.curve([[168, 272], [230, 262], [290, 280], [336, 276]])),
+      P('M444 232 C 446 268, 443 294, 433 308 M433 308 H 372 M427 308 L 434 352 M377 308 L 370 352 M439 274 H 384 C 377 274 375 280 377 287 L 381 308')
+    ];
+    const cells = [[1, 4], [1], [1, 2, 3, 5], [1, 5]];
+    cells.forEach((dots, i) => { const x0 = 76 + i * 64, y0 = 404; [1, 2, 3, 4, 5, 6].forEach((d) => { const x = x0 + (d > 3 ? 18 : 0), y = y0 + ((d - 1) % 3) * 18; if (dots.includes(d)) items.push({ t: 'dot', x, y, r: 5.6, emb: 1 }); else items.push({ t: 'nub', x, y }); }); });
+    items.push(W(330, 446, 'c · a · r · e, in Braille', 26), W(440, 110, 'sitting beside,', 32), W(440, 152, 'mostly listening', 32, { id: 'ml' }), { t: 'under', ref: 'ml' },
+      T(40, 494, 'BLIND & CANCER CARE FOUNDATION  ·  MUMBAI', 11));
+    return items;
+  },
+  people() {
+    const items = [], words = ['thank you', 'reframe', 'tone'];
+    words.forEach((w, k) => { const x = 36 + k * 198; items.push(P(H.rect(x, 50, 168, 106)), P(H.poly([[x, 50], [x + 84, 108], [x + 168, 50]])), W(x + 16, 146, w, 27)); });
+    const [a, h] = H.arrow(318, 178, 200, 240, -.2); items.push(P(a, { note: 1 }), P(h, { note: 1 }));
+    items.push(W(36, 300, 'when people feel safe,', 46), W(36, 356, 'they open up.', 46, { id: 'ou', r: 1 }), { t: 'under', ref: 'ou', red: 1 }, { t: 'star', ref: 'ou' },
+      W(300, 420, '— Inside the Inbox, her team session', 25),
+      T(36, 476, 'ROTARACT NAVI MUMBAI SAMARITANS  ·  TRS CHAIR', 11));
+    return items;
+  },
+  learning() {
+    const seals = [['JOHNS HOPKINS', 'FIRST AID'], ['U. OF SYDNEY', 'POSITIVE PSYCH.'], ['WESLEYAN', 'SUICIDE PREV.'], ['STANFORD', 'ORG. ANALYSIS'], ['QPR', 'LONELINESS'], ['THERAPY4USS', 'ATTACHMENT']], items = [];
+    seals.forEach(([a, b], i) => { const cx = 110 + (i % 3) * 205, cy = 126 + Math.floor(i / 3) * 178; items.push(P(H.scallop(cx, cy, 60, 22)), P(H.loop(cx, cy, 45, 45, .04)), T(cx, cy - 2, a, 9.2, { anchor: 'middle' }), T(cx, cy + 14, b, 8.4, { anchor: 'middle' })); });
+    items.push(W(330, 444, 'still learning', 34, { id: 'sl' }));
+    const [ar, h] = H.arrow(500, 432, 590, 400, -.3); items.push(P(ar, { note: 1 }), P(h, { note: 1 }));
+    items.push(T(36, 486, 'COURSES & WORKSHOPS  ·  2024 — 25', 11));
+    return items;
+  }
+};
+
+
+
+/* ================= building a drawing (notes go on their own layer, so they can drift at a different depth) ================= */
+const drawings = [];
+function el(tag, attrs, parent) { const e = document.createElementNS(NS, tag); for (const k in attrs) e.setAttribute(k, attrs[k]); parent && parent.appendChild(e); return e; }
+let clipN = 0;
+function build(svg, spec) {
+  const art = el('g', { class: 'layer-art' }, svg), notes = el('g', { class: 'layer-notes' }, svg);
+  const items = [], byId = {}; let lastBox = null;
+  const ref = (id) => byId[id] && byId[id].box;
+  spec.forEach((s) => {
+    const isNote = s.note || s.t === 'w' || s.t === 'under' || s.t === 'ring' || s.t === 'star';
+    const host = isNote ? notes : art;
+    if (s.t === 'p' || s.t === 'under' || s.t === 'ring' || s.t === 'star') {
+      let d = s.d; const red = s.red;
+      if (s.t === 'under') { const b = ref(s.ref); d = H.wave(b.x, b.y + b.height + 4, b.x + b.width, 3); }
+      if (s.t === 'ring') { const b = ref(s.ref); d = H.loop(b.x + b.width / 2, b.y + b.height / 2 + 2, b.width / 2 + 16, b.height / 2 + 9, .14); }
+      if (s.t === 'star') { const b = ref(s.ref); d = H.star(b.x + b.width + 26, b.y + b.height / 2, 12); }
+      const g = el('g', {}, host);
+      const main = el('path', { d, class: red ? 'red' : 'ink', pathLength: 1 }, g);
+      const ghost = red || s.light ? null : el('path', { d, class: 'ghost', pathLength: 1, transform: 'translate(.9 .7)' }, g);
+      items.push({ k: 'p', main, ghost, w: Math.max(14, main.getTotalLength()) });
+    } else if (s.t === 'w' || s.t === 't') {
+      const x = s.x === 'after' ? lastBox.x + lastBox.width + 14 : s.x;
+      const id = 'c' + (++clipN), cp = el('clipPath', { id }, svg), cr = el('rect', { x: 0, y: 0, width: 0, height: 0 }, cp);
+      const tx = el('text', { x, y: s.y, class: s.t === 'w' ? 'hw' + (s.r ? ' r' : '') : 'ty', 'font-size': s.s, 'clip-path': `url(#${id})`, 'text-anchor': s.anchor || 'start' }, host);
+      tx.textContent = s.text;
+      const box = tx.getBBox();
+      cr.setAttribute('x', box.x - 6); cr.setAttribute('y', box.y - 8); cr.setAttribute('height', box.height + 16);
+      const it = { k: s.t, cr, box, chars: s.text.length, w: s.t === 'w' ? box.width * 1.15 : box.width * .35 };
+      items.push(it); lastBox = box; if (s.id) byId[s.id] = it;
+    } else if (s.t === 'dot') {
+      items.push({ k: 'dot', c: el('circle', { cx: s.x, cy: s.y, r: s.r, class: 'dot' + (s.emb ? ' emb' : '') }, art), w: 16 });
+    } else if (s.t === 'nub') {
+      el('circle', { cx: s.x, cy: s.y, r: 2.4, class: 'nub' }, art);
+    } else if (s.t === 'stamp') {
+      const g = el('g', { class: 'stampG' }, art);
+      el('circle', { cx: s.x, cy: s.y, r: s.r, 'stroke-width': 3.2 }, g); el('circle', { cx: s.x, cy: s.y, r: s.r - 8, 'stroke-width': 1.4 }, g);
+      s.lines.forEach((l, i) => { const t = el('text', { x: s.x, y: s.y - 14 + i * 20 + (i === 1 ? 2 : 0), 'font-size': i === 1 ? 15 : 10 }, g); t.textContent = l; });
+      items.push({ k: 'stamp', g, w: 70 });
+    }
+  });
+  const total = items.reduce((a, b) => a + b.w, 0); let acc = 0;
+  items.forEach((it) => { it.s = .03 + .92 * acc / total; acc += it.w; it.e = .03 + .92 * acc / total; it.lp = -1; });
+  return { items, notes };
+}
+function makeDrawing(svg, spec) { const b = build(svg, spec); const d = { svg, items: b.items, notes: b.notes, p: 0, last: -1 }; drawings.push(d); return d; }
+const clamp = (x) => (x < 0 ? 0 : x > 1 ? 1 : x);
+function apply(d) {
+  if (d.p === d.last) return; d.last = d.p;
+  d.items.forEach((it) => {
+    const lp = clamp((d.p - it.s) / (it.e - it.s)); if (lp === it.lp) return; it.lp = lp;
+    if (it.k === 'p') { const v = lp > 0 ? '' : 'hidden'; it.main.style.strokeDashoffset = 1 - lp; it.main.style.visibility = v; if (it.ghost) { it.ghost.style.strokeDashoffset = 1 - lp; it.ghost.style.visibility = v; } }
+    else if (it.k === 'w') it.cr.setAttribute('width', lp * (it.box.width + 12));
+    else if (it.k === 't') it.cr.setAttribute('width', (Math.floor(lp * it.chars) / it.chars) * (it.box.width + 12));
+    else if (it.k === 'dot') it.c.classList.toggle('on', lp > .3);
+    else if (it.k === 'stamp') it.g.classList.toggle('on', lp > .5);
+  });
+}
+
+function stage(section, opts) {
+  const track = $('.track', section);
+  const dist = () => Math.max(1, track.scrollWidth - innerWidth);
+  return gsap.to(track, { x: () => -dist(), ease: 'none', scrollTrigger: { trigger: section, start: 'top top', end: () => '+=' + dist() * (opts.stretch || 1), pin: true, scrub: reduce ? true : .45, invalidateOnRefresh: true, onUpdate: (st) => opts.onUpdate(st.progress) } });
+}
+
+function start() {
+  const nb = $('#nb'), track = $('#nbTrack'), hero = $('#hero');
+  const plates = $$('.plate:not(.hero)', nb), allPanels = $$('.plate', nb), N = plates.length;
+  const roman = ['I', 'II', 'III', 'IV', 'V', 'VI', 'VII'];
+  const pds = plates.map((pl) => makeDrawing($('svg', pl), DRAW[$('svg', pl).dataset.plate]()));
+  allPanels.forEach((pn) => { pn._sheet = $('.sheet', pn); pn._txt = $('.txt', pn); pn._d = pds[plates.indexOf(pn)]; });
+
+  /* ---- the opening: thread in, name rises, doodles pop ---- */
+  $$('[data-split]', hero).forEach((w, wi) => { const t = w.textContent; w.textContent = ''; [...t].forEach((ch, i) => { const c = document.createElement('span'); c.className = 'c'; c.textContent = ch; c.style.setProperty('--d', (.35 + wi * .18 + i * .035).toFixed(3) + 's'); w.appendChild(c); }); });
+  const hd = $('#heroDoodles');
+  const doodle = (depth, parts) => { const g = el('g', { 'data-depth': depth }, hd); parts.forEach(([kind, a, delay, red]) => {
+    if (kind === 'p') el('path', { d: a, class: red ? 'red' : 'ink', pathLength: 1, style: `--d:${delay}s` }, g);
+    else { const t = el('text', { x: a[0], y: a[1], 'font-size': a[3], class: red ? 'r' : '', style: `--d:${delay}s`, transform: a[4] ? `rotate(${a[4]} ${a[0]} ${a[1]})` : '' }, g); t.textContent = a[2]; } }); return g; };
+  doodle(1.4, [['p', H.star(170, 150, 16), 1.05], ['t', [120, 210, 'hi!', 46, -8], 1.15]]);
+  doodle(-.9, [['p', H.line(842, 120, 842, 168), 1.2], ['p', H.line(818, 144, 866, 144), 1.26], ['p', H.line(826, 128, 858, 160), 1.32], ['p', H.line(858, 128, 826, 160), 1.36]]);
+  doodle(1, [['t', [150, 440, 'listening, mostly', 30, -4], 1.3]]);
+  doodle(-1.3, [['p', H.wave(600, 452, 760, 4), 1.4, 1]]);
+  doodle(.7, [['p', H.arrow(770, 480, 900, 455, -.3)[0], 1.5], ['p', H.arrow(770, 480, 900, 455, -.3)[1], 1.6], ['t', [700, 520, 'turn the page', 30, -3], 1.6]]);
+  doodle(-.6, [['t', [760, 250, 'psychology', 26, 6], 1.1, 1]]);
+  const depthEls = $$('[data-depth]', hd).map((g) => ({ g, k: +g.dataset.depth }));
+  const mouse = { x: 0, y: 0, tx: 0, ty: 0 };
+  hero.addEventListener('pointermove', (e) => { mouse.tx = e.clientX / innerWidth * 2 - 1; mouse.ty = e.clientY / innerHeight * 2 - 1; });
+  requestAnimationFrame(() => hero.classList.add('go'));
+
+  /* ---- the red thread: one line through the whole notebook, drawn just ahead of you ---- */
+  const thread = $('#thread'), tpath = $('#threadPath'), bead = $('#bead'), halo = $('#halo');
+  let TL = 1, samples = [], intro = { x: -40 }, lastX = null;
+  function buildThread() {
+    const vw = innerWidth, H_ = nb.clientHeight, W_ = track.scrollWidth, small = vw < 760, pts = [];
+    const y = (f) => H_ * f;
+    pts.push([-40, y(.7)], [vw * .1, y(.76)], [vw * .22, y(.72)], [vw * .34, y(small ? .74 : .79)], [vw * .46, y(small ? .8 : .86)], [vw * .54, y(small ? .76 : .8)], [vw * .5, y(small ? .7 : .74)], [vw * .45, y(small ? .76 : .8)], [vw * .58, y(small ? .84 : .9)], [vw * .82, y(.86)]);
+    allPanels.slice(1).forEach((pn, i) => {
+      const x0 = pn.offsetLeft, lift = i % 2 ? .02 : -.015;
+      pts.push([x0 + vw * .04, y(.9 + lift)], [x0 + vw * .26, y(.93)], [x0 + vw * .44, y(.88 + lift)], [x0 + vw * .58, y(.92)], [x0 + vw * .66, y(.86)], [x0 + vw * .6, y(.82)], [x0 + vw * .55, y(.87)], [x0 + vw * .7, y(.94)], [x0 + vw * .9, y(.9 - lift)]);
+    });
+    pts.push([W_ + 40, y(.9)]);
+    thread.setAttribute('width', W_); thread.setAttribute('height', H_); thread.setAttribute('viewBox', `0 0 ${W_} ${H_}`);
+    tpath.setAttribute('d', H.curve(pts));
+    TL = tpath.getTotalLength(); tpath.style.strokeDasharray = `${TL} ${TL}`;
+    // where along the line each screen x is first reached, so the line can be drawn "up to here"
+    samples = []; let mx = -Infinity; const step = 6;
+    for (let l = 0; l <= TL; l += step) { const p = tpath.getPointAtLength(l); mx = Math.max(mx, p.x); samples.push(mx); }
+    lastX = null;
+  }
+  const lenAtX = (x) => { let lo = 0, hi = samples.length - 1; while (lo < hi) { const m = (lo + hi) >> 1; if (samples[m] < x) lo = m + 1; else hi = m; } return lo * 6; };
+  buildThread();
+  if (reduce) intro.x = Infinity; else gsap.to(intro, { x: innerWidth * .62, duration: 1.4, ease: 'power2.inOut', onComplete: () => (intro.x = Infinity) });
+
+  /* ---- the stage: pages tilt and separate into layers as they pass ---- */
+  const nbTween = stage(nb, {
+    stretch: 1.7,
+    onUpdate: (p) => {
+      const k = Math.max(-1, Math.min(N - 1, Math.round(p * N) - 1));
+      $('#nbCount').textContent = k < 0 ? '' : roman[k];
+      $('#nbName').classList.toggle('on', p > .04);
+      $$('#nbChapters button').forEach((b, j) => b.classList.toggle('on', j === k)); gsap.set('#nbProg', { scaleX: p });
+    }
+  });
+  plates.forEach((pl, i) => {
+    ScrollTrigger.create({ trigger: pl, containerAnimation: nbTween, start: 'left 75%', end: 'right 25%', toggleClass: { targets: pl, className: 'on' } });
+    ScrollTrigger.create({ trigger: pl, containerAnimation: nbTween, start: 'left 95%', end: 'left 8%', onUpdate: (st) => (pds[i].p = reduce ? 1 : st.progress) });
+  });
+  const chapters = $('#nbChapters');
+  plates.forEach((pl, i) => chapters.insertAdjacentHTML('beforeend', `<li><button data-i="${i}">${pl.dataset.name}</button></li>`));
+  $$('#nbChapters button').forEach((b) => b.addEventListener('click', () => {
+    const st = nbTween.scrollTrigger, y = st.start + (st.end - st.start) * ((+b.dataset.i + 1) / N);
+    lenis ? lenis.scrollTo(y, { duration: 1 }) : window.scrollTo(0, y);
+  }));
+
+  gsap.ticker.add(() => {
+    drawings.forEach(apply);
+    const x = gsap.getProperty(track, 'x'), vw = innerWidth;
+    // hero doodles drift with the cursor, each at its own depth
+    mouse.x += (mouse.tx - mouse.x) * .08; mouse.y += (mouse.ty - mouse.y) * .08;
+    if (!reduce) depthEls.forEach(({ g, k }) => g.setAttribute('transform', `translate(${(mouse.x * k * 14 + x * k * .05).toFixed(1)} ${(mouse.y * k * 10).toFixed(1)})`));
+    // the thread is drawn up to just ahead of the middle of the screen
+    const head = Math.min(-x + vw * .62, intro.x);
+    const len = Math.min(TL, lenAtX(head));
+    tpath.style.strokeDashoffset = TL - len;
+    const bp = tpath.getPointAtLength(len); bead.setAttribute('cx', bp.x); bead.setAttribute('cy', bp.y); halo.setAttribute('cx', bp.x); halo.setAttribute('cy', bp.y);
+    halo.setAttribute('r', 7 + Math.sin(performance.now() / 260) * 2.5);
+    if (x === lastX || reduce) return; lastX = x;
+    // each page tilts away as it leaves, and its layers separate: type drifts one way, notes the other
+    allPanels.forEach((pn) => {
+      const rel = (pn.offsetLeft + x + pn.offsetWidth / 2 - vw / 2) / vw; if (Math.abs(rel) > 1.3) return;
+      const r = Math.max(-1, Math.min(1, rel)), a = Math.abs(r);
+      pn._sheet.style.transform = `perspective(1600px) rotateY(${(-r * 9).toFixed(2)}deg) translateZ(${(-a * 90).toFixed(1)}px)`;
+      pn._sheet.style.opacity = (1 - a * .45).toFixed(3);
+      if (pn._txt) pn._txt.style.transform = `translate3d(${(r * vw * .16).toFixed(1)}px,0,0)`;
+      if (pn._d) pn._d.notes.setAttribute('transform', `translate(${(r * -70).toFixed(1)} 0)`);
+    });
+  });
+
+  /* ---- session: the room fills in, the chairs come closer ---- */
+  const room = $('#room');
+  const roomSpec = [
+    P(H.line(0, 252, 900, 252, .002)),
+    P(H.loop(450, 46, 24, 24, .05)), P(H.line(450, 30, 450, 46, .01)),
+    P('M232 150 C 230 186, 234 214, 246 228 M246 228 H 316 M253 228 L 245 252 M309 228 L 317 252 M238 196 H 300 C 307 196 310 202 307 209 L 303 228'),
+    P('M668 150 C 670 186, 666 214, 654 228 M654 228 H 584 M647 228 L 655 252 M591 228 L 583 252 M662 196 H 600 C 593 196 590 202 593 209 L 597 228'),
+    P(H.line(426, 196, 474, 196, .01)), P(H.line(432, 196, 430, 252, .01)), P(H.line(468, 196, 470, 252, .01)),
+    P(H.poly([[442, 196], [445, 172], [457, 172], [460, 196]])), P(H.line(444, 182, 458, 182, .01), { light: 1 }),
+    P(H.curve([[110, 252], [104, 232], [112, 214], [126, 214], [134, 232], [128, 252]])), P(H.curve([[120, 214], [112, 186], [96, 172]])), P(H.curve([[120, 214], [126, 182], [146, 166]])), P(H.curve([[120, 214], [118, 192], [124, 176]])),
+    P(H.rect(760, 70, 80, 182)), P(H.line(826, 162, 832, 162, .01))
+  ];
+  const rd = makeDrawing(room, roomSpec);
+  const sPanels = $$('.s-panel', $('#ss')), times = [0, 0, 5, 15, 25, 40, 50]; let C = [];
+  const planRoom = () => {
+    const tr = $('#ssTrack'), dist = Math.max(1, tr.scrollWidth - innerWidth);
+    C = sPanels.map((pn) => clamp((pn.offsetLeft + pn.offsetWidth / 2 - innerWidth / 2) / dist));
+    const w = C[1], L = C[2], R = C[4], Z = C[6], seg = (a, b) => [Math.max(0, a), Math.max(0, b)];
+    const plan = [seg(0, w * .45), seg(w * .3, w * .55), seg(w * .5, w * .6), seg(w * .55, w * .8), seg(w * .75, w), seg(L - .07, L - .05), seg(L - .05, L - .04), seg(L - .04, L - .03), seg(L - .03, L - .01), seg(L - .01, L), seg(R - .07, R - .05), seg(R - .05, R - .035), seg(R - .035, R - .02), seg(R - .02, R), seg(Z - .07, Z - .015), seg(Z - .015, Z)];
+    plan.forEach(([a, b], i) => { if (rd.items[i]) { rd.items[i].s = a; rd.items[i].e = Math.max(b, a + .001); rd.items[i].lp = -1; } }); rd.last = -1;
+  };
+  const minutes = (p) => { if (p <= C[1]) return 0; for (let i = 1; i < C.length - 1; i++) if (p <= C[i + 1]) return times[i] + (times[i + 1] - times[i]) * (p - C[i]) / ((C[i + 1] - C[i]) || 1); return 50; };
+  const chairL = rd.items[3].main.parentNode, chairR = rd.items[4].main.parentNode;
+  const hand = el('path', { d: 'M450 46 L 450 30', class: 'ink', pathLength: 1, style: 'stroke-dashoffset:0' }, room);
+  stage($('#ss'), {
+    onUpdate: (p) => {
+      rd.p = reduce ? 1 : Math.min(1, p * 1.04);
+      const m = minutes(p), sec = Math.round(m * 60); $('#ssClock').textContent = `${String(Math.floor(sec / 60)).padStart(2, '0')}:${String(sec % 60).padStart(2, '0')}`;
+      const near = 92 * clamp((p - C[1]) / ((C[6] - C[1]) || 1)); chairL.setAttribute('transform', `translate(${near.toFixed(1)} 0)`); chairR.setAttribute('transform', `translate(${(-near).toFixed(1)} 0)`);
+      hand.setAttribute('transform', `rotate(${(m * 6).toFixed(1)} 450 46)`); gsap.set('#ssProg', { scaleX: p });
+    }
+  });
+  ScrollTrigger.addEventListener('refresh', () => { planRoom(); buildThread(); });
+  ScrollTrigger.refresh();
+
+  const shot = new URLSearchParams(location.search).get('shot');
+  if (shot) setTimeout(() => { const [id, fr] = shot.split(':'); const st = ScrollTrigger.getAll().find((t) => t.pin && t.trigger.id === id); if (!st) return; if (lenis) lenis.stop(); window.scrollTo(0, st.start + (st.end - st.start) * +fr); ScrollTrigger.update(); }, 900);
+}
+Promise.all([document.fonts.load('600 30px Caveat'), document.fonts.load('500 11px "IBM Plex Mono"'), document.fonts.load('400 40px "Bodoni Moda"'), document.fonts.load('italic 400 40px "Bodoni Moda"')]).catch(() => {}).then(start);
+})();
+</script>
+
+</body>
+</html>
