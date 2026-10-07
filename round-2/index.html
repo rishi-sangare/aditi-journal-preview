@@ -1,0 +1,813 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<meta name="robots" content="noindex,nofollow">
+<style>[hidden]{display:none!important}</style>
+</head>
+<body>
+<title>Aditi Portfolio Round Two</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Bodoni+Moda:ital,opsz,wght@0,6..96,400..700;1,6..96,400..700&family=Instrument+Sans:wght@400;500;600&family=IBM+Plex+Mono:wght@400;500&family=Caveat:wght@500;700&display=swap" rel="stylesheet">
+<style>
+/* Layout: an editorial review document. Each direction gets a full-bleed, pinned stage that scrolls sideways, with a four-column note strip beneath it. */
+:root{
+  --paper:#F3F2EE; --paper-2:#E9E8E3; --studio:#D6D5D0; --studio-2:#C4C3BE;
+  --ink:#111110; --graphite:#5D5C58; --silver:#A9A7A1; --line:rgba(17,17,16,.14);
+  --red:#B32B22; --amber:#C08A2E; --blue:#24408C;
+  --display:"Bodoni Moda","Didot","Bodoni 72",Georgia,serif;
+  --body:"Instrument Sans",system-ui,-apple-system,"Segoe UI",sans-serif;
+  --mono:"IBM Plex Mono",ui-monospace,"SF Mono",Menlo,monospace;
+  --hand:"Caveat","Bradley Hand","Segoe Print",cursive;
+  --ease:cubic-bezier(.16,1,.3,1);
+  --grain:url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='200' height='200'><filter id='n'><feTurbulence type='fractalNoise' baseFrequency='.9' numOctaves='3' stitchTiles='stitch'/><feColorMatrix values='0 0 0 0 0  0 0 0 0 0  0 0 0 0 0  0 0 0 .07 0'/></filter><rect width='100%' height='100%' filter='url(%23n)'/></svg>");
+  color-scheme:light;
+}
+*{box-sizing:border-box}
+html{-webkit-text-size-adjust:100%}
+body{margin:0;background:var(--paper) var(--grain);color:var(--ink);font:16px/1.6 var(--body);overflow-x:hidden}
+::selection{background:var(--ink);color:var(--paper)}
+a{color:inherit}
+:focus-visible{outline:2px solid var(--ink);outline-offset:3px}
+h1,h2,h3,h4{margin:0;text-wrap:balance;font-weight:400}
+p{margin:0}
+em{font-style:italic}
+.wrap{max-width:1240px;margin-inline:auto;padding-inline:clamp(16px,4vw,48px)}
+.mono{font:500 11.5px/1.4 var(--mono);letter-spacing:.08em;text-transform:uppercase}
+.hand{font-family:var(--hand)}
+
+/* ---------- hero ---------- */
+.hero{padding-block:clamp(56px,10vw,128px) clamp(40px,6vw,72px);border-bottom:1px solid var(--line)}
+.hero .meta{display:flex;justify-content:space-between;gap:16px;flex-wrap:wrap;color:var(--graphite);margin-bottom:clamp(28px,5vw,64px)}
+.hero h1{font:400 clamp(64px,13vw,188px)/.86 var(--display);letter-spacing:-.02em}
+.hero h1 em{font-style:italic}
+.hero h1 .note{font:700 clamp(22px,3vw,40px)/1 var(--hand);color:var(--red);letter-spacing:0;vertical-align:top;margin-left:.2em;display:inline-block;transform:rotate(-6deg) translateY(.4em)}
+.hero .sub{display:grid;grid-template-columns:minmax(0,1.2fr) minmax(0,1fr);gap:clamp(24px,5vw,80px);margin-top:clamp(28px,5vw,56px);align-items:end}
+.hero .sub p{font:400 clamp(18px,2vw,23px)/1.45 var(--body);max-width:34ch}
+.index{list-style:none;margin:0;padding:0;border-top:1px solid var(--ink)}
+.index a{display:grid;grid-template-columns:34px 1fr auto;gap:12px;align-items:baseline;padding:12px 0;border-bottom:1px solid var(--line);text-decoration:none;transition:padding .25s var(--ease)}
+.index a:hover{padding-left:8px}
+.index b{font:500 12px var(--mono);color:var(--graphite)}
+.index span{font:400 22px/1.1 var(--display)}
+.index span em{font-style:italic}
+.index i{font:500 11px var(--mono);letter-spacing:.06em;color:var(--graphite);font-style:normal}
+@media (max-width:760px){.hero .sub{grid-template-columns:minmax(0,1fr)}}
+
+/* ---------- brief ---------- */
+.brief{padding-block:clamp(56px,8vw,96px)}
+.brief h2,.found h2,.rec h2{font:400 clamp(36px,5vw,64px)/1 var(--display);margin-bottom:28px}
+.brief h2 em,.found h2 em,.rec h2 em{font-style:italic}
+.pairs{border-top:1px solid var(--ink)}
+.pair{display:grid;grid-template-columns:minmax(0,1fr) 40px minmax(0,1.3fr);gap:16px;align-items:baseline;padding:16px 0;border-bottom:1px solid var(--line)}
+.pair .said{font:400 22px/1.3 var(--display);font-style:italic;color:var(--graphite)}
+.pair .arr{font:500 13px var(--mono);color:var(--silver)}
+.pair .does{font-size:16.5px}
+@media (max-width:640px){.pair{grid-template-columns:minmax(0,1fr)}.pair .arr{display:none}}
+
+/* ---------- foundation ---------- */
+.found{padding-block:clamp(56px,8vw,96px);border-top:1px solid var(--line)}
+.fgrid{display:grid;grid-template-columns:repeat(12,minmax(0,1fr));gap:20px}
+.fcard{background:#FAF9F6;border:1px solid var(--line);padding:22px;min-width:0}
+.fcard h3{color:var(--graphite);margin-bottom:16px}
+.f-pal{grid-column:span 5}.f-type{grid-column:span 7}.f-photo{grid-column:span 7}.f-motion{grid-column:span 5}
+@media (max-width:900px){.f-pal,.f-type,.f-photo,.f-motion{grid-column:span 12}}
+.sw{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:8px}
+.sw div{display:grid;gap:6px}
+.sw i{display:block;aspect-ratio:1/1;background:var(--c);border:1px solid var(--line)}
+.sw b{font:500 13px/1.2 var(--body)}
+.sw span{font:500 10.5px/1.3 var(--mono);color:var(--graphite);letter-spacing:.04em}
+.sw .acc i{border-radius:50%}
+.spec{display:grid;gap:14px}
+.spec .d{font:400 clamp(44px,6vw,72px)/.9 var(--display)}
+.spec .d em{font-style:italic}
+.spec .row{display:flex;gap:16px;align-items:baseline;justify-content:space-between;border-top:1px solid var(--line);padding-top:10px;flex-wrap:wrap}
+.spec .row span:first-child{min-width:0}
+.photos{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:14px}
+.photos figure{margin:0;display:grid;gap:8px}
+.photos figcaption{font:500 10.5px/1.3 var(--mono);color:var(--graphite);letter-spacing:.05em;text-transform:uppercase}
+.ph{aspect-ratio:4/5;position:relative;overflow:hidden;background:#d8d7d2}
+.ph.halftone{background:#f4f3ef}
+.ph.halftone::before{content:"";position:absolute;inset:0;background:radial-gradient(circle,#111 0 1.1px,transparent 1.5px) 0 0/5px 5px;
+  -webkit-mask:radial-gradient(ellipse 24% 20% at 50% 36%,#000 96%,transparent 100%),radial-gradient(ellipse 44% 34% at 50% 98%,#000 96%,transparent 100%);mask:radial-gradient(ellipse 24% 20% at 50% 36%,#000 96%,transparent 100%),radial-gradient(ellipse 44% 34% at 50% 98%,#000 96%,transparent 100%)}
+.ph.print{background:linear-gradient(100deg,#ececea 0%,#9a9994 55%,#4a4946 100%)}
+.ph.print::before{content:"";position:absolute;inset:0;background:radial-gradient(ellipse 22% 18% at 46% 38%,rgba(20,20,20,.55),transparent 70%),radial-gradient(ellipse 40% 30% at 48% 96%,rgba(15,15,15,.7),transparent 72%)}
+.ph.print::after,.ph.film::after{content:"";position:absolute;inset:0;background:var(--grain);opacity:1;mix-blend-mode:multiply}
+.ph.film{background:#111;padding:10px 6px}
+.ph.film i{position:absolute;inset:10px 6px;background:linear-gradient(160deg,#cfcdc8,#5e5d59)}
+.ph.film::before{content:"";position:absolute;left:0;right:0;top:2px;height:5px;background:repeating-linear-gradient(90deg,#f2f1ec 0 5px,transparent 5px 11px);z-index:1}
+.motion{list-style:none;margin:0;padding:0;display:grid;gap:0}
+.motion li{display:grid;grid-template-columns:86px minmax(0,1fr);gap:12px;padding:10px 0;border-top:1px solid var(--line);font-size:14.5px}
+.motion li b{font:500 12px/1.5 var(--mono)}
+
+/* ---------- variants ---------- */
+.variant{border-top:1px solid var(--ink)}
+.v-head{display:grid;grid-template-columns:auto minmax(0,1fr) minmax(0,.9fr);gap:clamp(16px,4vw,56px);align-items:end;padding-block:clamp(48px,7vw,88px) clamp(28px,4vw,44px)}
+.v-head .letter{font:400 clamp(90px,14vw,180px)/.8 var(--display);font-style:italic}
+.v-head h2{font:400 clamp(40px,6vw,80px)/.95 var(--display)}
+.v-head h2 em{font-style:italic}
+.v-head .lede{font-size:clamp(16px,1.6vw,18px);color:var(--graphite);max-width:46ch}
+.v-head .lede b{color:var(--ink);font-weight:500}
+.v-head .tag{display:inline-block;margin-bottom:12px;padding:5px 9px;border:1px solid var(--ink)}
+.v-head .tag.rec{background:var(--ink);color:var(--paper)}
+@media (max-width:860px){.v-head{grid-template-columns:minmax(0,1fr)}.v-head .letter{font-size:90px}}
+.v-notes{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:0;border-top:1px solid var(--line);margin-bottom:clamp(40px,6vw,72px)}
+.v-notes div{padding:20px 20px 24px 0;border-bottom:1px solid var(--line);min-width:0}
+.v-notes div+div{padding-left:20px;border-left:1px solid var(--line)}
+.v-notes h4{font:500 11px/1.4 var(--mono);letter-spacing:.08em;text-transform:uppercase;color:var(--graphite);margin-bottom:10px}
+.v-notes p,.v-notes li{font-size:14.5px;line-height:1.55}
+.v-notes ol{margin:0;padding-left:18px}
+.v-notes .meter{font:400 24px/1.1 var(--display)}
+.v-notes .meter em{font-style:italic}
+@media (max-width:900px){.v-notes{grid-template-columns:repeat(2,minmax(0,1fr))}.v-notes div:nth-child(3){padding-left:0;border-left:0}}
+@media (max-width:560px){.v-notes{grid-template-columns:minmax(0,1fr)}.v-notes div+div{padding-left:0;border-left:0}}
+
+/* pinned horizontal stages */
+.hwrap{position:relative;height:100vh;height:100svh;overflow:hidden}
+.htrack{position:absolute;top:0;left:0;height:100%;display:flex;will-change:transform}
+.panel{position:relative;flex:none;width:100vw;height:100%}
+.hud{position:absolute;left:clamp(16px,4vw,48px);right:clamp(16px,4vw,48px);bottom:22px;display:flex;align-items:center;gap:14px;z-index:5;pointer-events:none}
+.hud .bar{flex:1;height:1px;background:currentColor;opacity:.25;position:relative}
+.hud .bar i{position:absolute;left:0;top:-1px;height:3px;width:100%;background:currentColor;transform-origin:left;transform:scaleX(0)}
+.hint{font:600 19px/1 var(--hand)}
+
+/* draw-on strokes, fast */
+.draw{fill:none;stroke-linecap:round;stroke-linejoin:round;stroke-dasharray:1;stroke-dashoffset:1;transition:stroke-dashoffset .6s var(--ease) var(--d,.1s)}
+.on .draw,.on.draw{stroke-dashoffset:0}
+.rise{opacity:0;transform:translateY(18px);transition:opacity .35s var(--ease) var(--d,0s),transform .45s var(--ease) var(--d,0s)}
+.on .rise{opacity:1;transform:none}
+
+/* ---------- A · plates ---------- */
+#plates .hwrap{background:var(--paper);color:var(--ink);cursor:crosshair}
+#inkCanvas{position:absolute;inset:0;width:100%;height:100%;display:block;cursor:crosshair}
+.plate .num{position:absolute;left:clamp(16px,4vw,48px);top:clamp(20px,4vh,40px);display:flex;gap:18px;align-items:baseline}
+.plate .num b{font:400 clamp(44px,6vw,84px)/1 var(--display);font-style:italic}
+.plate .cap{position:absolute;left:clamp(16px,4vw,48px);bottom:clamp(64px,10vh,96px);max-width:min(440px,80vw)}
+.plate .cap h3{font:400 clamp(34px,4.4vw,60px)/.95 var(--display);margin:10px 0 12px}
+.plate .cap h3 em{font-style:italic}
+.plate .cap p{color:var(--graphite);font-size:15.5px;max-width:38ch}
+.plate .ill{position:absolute;right:clamp(16px,5vw,64px);bottom:clamp(64px,10vh,96px);width:clamp(120px,15vw,200px);pointer-events:none}
+.plate .ill path,.plate .ill rect,.plate .ill circle{stroke:var(--ink);stroke-width:1.6;fill:none}
+.plate .ill .red{stroke:var(--red)}
+.plate .ill text{font:600 17px var(--hand);fill:var(--graphite)}
+.plate .ask{position:absolute;right:clamp(16px,5vw,64px);top:clamp(24px,5vh,48px);font:700 clamp(22px,2.4vw,30px)/1 var(--hand);color:var(--red);transform:rotate(-4deg)}
+@media (max-width:760px){.plate .ill{display:none}.plate .cap{bottom:70px}}
+
+/* ---------- B · contact sheet ---------- */
+#contact .hwrap{background:#EDECE8 var(--grain)}
+#contact .htrack{align-items:center;padding-inline:clamp(16px,6vw,80px);gap:0}
+.cs-intro{flex:none;width:min(420px,78vw);margin-right:clamp(32px,6vw,80px)}
+.cs-intro h3{font:400 clamp(40px,5vw,68px)/.92 var(--display);margin:12px 0 14px}
+.cs-intro h3 em{font-style:italic}
+.cs-intro p{color:var(--graphite);max-width:34ch}
+.strip{flex:none;background:#121212;padding:34px 18px;display:flex;gap:14px;position:relative;box-shadow:0 30px 60px -30px rgba(0,0,0,.45)}
+.strip::before,.strip::after{content:"";position:absolute;left:0;right:0;height:9px;background:repeating-linear-gradient(90deg,transparent 0 9px,#EDECE8 9px 19px,transparent 19px 26px);opacity:.92}
+.strip::before{top:11px}.strip::after{bottom:11px}
+.edge{position:absolute;left:24px;font:500 9.5px/1 var(--mono);color:var(--amber);letter-spacing:.14em;white-space:nowrap}
+.edge.t{top:24px}.edge.b{bottom:22px}
+.fr{position:relative;flex:none;height:min(44vh,30vw);aspect-ratio:3/2;cursor:zoom-in;--r:0px;--mx:50%;--my:50%}
+@media (max-width:760px){.fr{height:34vh}}
+.fr canvas{position:absolute;inset:0;width:100%;height:100%;display:block}
+.fr .bw{filter:grayscale(1) contrast(1.12) brightness(1.02)}
+.fr .lens{position:absolute;inset:0;clip-path:circle(var(--r) at var(--mx) var(--my));overflow:hidden}
+.fr .lens canvas{transform-origin:var(--mx) var(--my);transform:scale(1.9)}
+.fr .ring{position:absolute;left:var(--mx);top:var(--my);width:calc(var(--r) * 2);height:calc(var(--r) * 2);margin:calc(var(--r) * -1) 0 0 calc(var(--r) * -1);border-radius:50%;box-shadow:0 0 0 1.5px rgba(255,255,255,.85),0 8px 24px rgba(0,0,0,.35);pointer-events:none}
+.fr .no{position:absolute;left:6px;bottom:-26px;font:500 10px var(--mono);color:var(--amber);letter-spacing:.12em}
+.grease{position:absolute;inset:-14px -16px;overflow:visible;pointer-events:none;width:calc(100% + 32px);height:calc(100% + 28px)}
+.grease path{stroke:var(--red);stroke-width:4.5;opacity:.88;fill:none;stroke-linecap:round;stroke-dasharray:1;stroke-dashoffset:1;transition:stroke-dashoffset .5s var(--ease) .1s}
+.fr.on .grease path{stroke-dashoffset:0}
+.cs-caps{position:absolute;left:0;top:calc(100% + 58px);width:100%;display:grid;gap:4px}
+.cs-caps .mono{color:var(--graphite)}
+.cs-caps b{font:400 22px/1.1 var(--display)}
+.cs-caps b em{font-style:italic}
+.cs-caps .hand{font-size:20px;font-weight:700;color:var(--red);line-height:1}
+.cs-end{flex:none;width:min(380px,74vw);margin-left:clamp(32px,6vw,80px)}
+.cs-end p{font:400 clamp(26px,2.8vw,36px)/1.15 var(--display)}
+.cs-end p em{font-style:italic}
+
+/* ---------- C · journal, editorial edition ---------- */
+#journalC .hwrap{background:radial-gradient(70% 70% at 50% 42%,#E4E3DF,var(--studio) 60%,var(--studio-2));color:var(--ink)}
+.bigtype{position:absolute;left:0;top:50%;transform:translateY(-58%);white-space:nowrap;font:400 clamp(160px,30vw,460px)/.8 var(--display);letter-spacing:-.04em;color:var(--ink);pointer-events:none;will-change:transform}
+.bigtype em{font-style:italic}
+.scriptline{position:absolute;left:5vw;bottom:13vh;font:700 clamp(30px,4vw,58px)/1 var(--hand);color:var(--blue);transform:rotate(-6deg);pointer-events:none;z-index:3}
+.cover-meta{position:absolute;left:clamp(16px,4vw,48px);top:clamp(20px,4vh,36px);right:clamp(16px,4vw,48px);display:flex;justify-content:space-between;gap:12px;z-index:3}
+.bookstage{position:absolute;inset:0;display:grid;place-items:center;z-index:2}
+.bookholder{position:relative;transition:transform .45s var(--ease)}
+.bookholder::before{content:"";position:absolute;left:3%;right:3%;bottom:-5%;height:14%;background:radial-gradient(closest-side,rgba(0,0,0,.42),transparent);filter:blur(10px);z-index:-1;transition:left .45s var(--ease),right .45s var(--ease)}
+.bookholder.at-cover::before{left:52%}.bookholder.at-back::before{right:52%}
+#bookC{min-width:0!important;min-height:0!important}
+.clipped{position:absolute;right:calc(-1 * clamp(70px,9vw,140px));top:-12%;width:clamp(96px,12vw,170px);z-index:60;transform:rotate(5deg);pointer-events:none}
+.clipped .print{background:#FAFAF8;padding:7px 7px 26px;box-shadow:0 10px 24px -8px rgba(0,0,0,.4)}
+.clipped .print .ph{aspect-ratio:4/5}
+.clipped .print span{display:block;font:500 9px var(--mono);letter-spacing:.1em;color:var(--graphite);margin-top:7px;text-transform:uppercase}
+.clipped svg{position:absolute;left:50%;top:-22px;transform:translateX(-50%);width:54px}
+.pgC{container-type:inline-size;background:#FBFBF9;color:var(--ink);overflow:hidden;font:clamp(9.5px,3cqw,13.5px)/1.5 var(--body)}
+.pgC .in{position:absolute;inset:8cqw 8cqw 10cqw}
+.pgC.L{box-shadow:inset -18px 0 22px -18px rgba(0,0,0,.28)}
+.pgC.R{box-shadow:inset 18px 0 22px -18px rgba(0,0,0,.28)}
+.pgC .k{font:500 2.4cqw/1.3 var(--mono);letter-spacing:.1em;text-transform:uppercase;color:var(--graphite);display:flex;justify-content:space-between;margin-bottom:4cqw}
+.pgC h4{font:400 9cqw/.95 var(--display);margin-bottom:2cqw}
+.pgC h4 em{font-style:italic}
+.pgC .role{font:500 2.5cqw/1.4 var(--mono);color:var(--graphite);margin-bottom:4cqw;display:block}
+.pgC p{margin-bottom:2.5cqw}
+.pgC .fn{position:absolute;left:8cqw;right:8cqw;bottom:4.5cqw;display:flex;justify-content:space-between;font:500 2.2cqw var(--mono);color:var(--silver);letter-spacing:.1em}
+.pgC svg path,.pgC svg rect,.pgC svg circle{fill:none;stroke:var(--ink);stroke-width:1.5}
+.pgC .blue{color:var(--blue);font:700 5cqw/1.2 var(--hand)}
+.pgC .stamp{width:24cqw;height:24cqw;border:.7cqw solid var(--red);border-radius:50%;display:grid;place-items:center;text-align:center;color:var(--red);font:600 2.3cqw/1.3 var(--mono);letter-spacing:.08em;transform:rotate(-13deg);position:absolute;right:8cqw;top:20cqw}
+.pgC .stamp::before{content:"";position:absolute;inset:1.4cqw;border:.35cqw solid var(--red);border-radius:50%}
+.pgC .stamp b{display:block;font-size:3.8cqw}
+.pgC .stages{display:grid;gap:2.4cqw;margin-top:2cqw}
+.pgC .stages div{display:grid;grid-template-columns:26cqw 1fr;gap:2cqw;border-bottom:1px solid var(--line);padding-bottom:2cqw}
+.pgC .stages b{font:500 2.3cqw/1.3 var(--mono);letter-spacing:.08em;text-transform:uppercase}
+.pgC .stages span{font:600 4cqw/1.2 var(--hand);color:var(--silver)}
+.coverC{background:#151515;color:#F3F2EE}
+.coverC .lab{position:absolute;left:12%;right:12%;top:36%;border:1px solid rgba(243,242,238,.4);padding:7cqw 6cqw;text-align:center}
+.coverC .lab b{display:block;font:400 18cqw/.8 var(--display);font-style:italic}
+.coverC .lab span{display:block;font:500 2.6cqw/1.4 var(--mono);letter-spacing:.2em;margin-top:5cqw;text-transform:uppercase;opacity:.8}
+.brl{display:flex;gap:4cqw;margin:4cqw 0 2cqw}
+.brl .c{display:grid;grid-template-columns:repeat(2,2.6cqw);grid-template-rows:repeat(3,2.6cqw);grid-auto-flow:column;gap:1.3cqw}
+.brl i{border-radius:50%;background:rgba(0,0,0,.05)}
+.brl i.o{background:radial-gradient(circle at 35% 30%,#fff 0 18%,#eeede8 45%,#cfcdc6 100%);box-shadow:.35cqw .55cqw .6cqw rgba(0,0,0,.28),-.2cqw -.2cqw .4cqw #fff}
+.pgC .q{font:400 5.6cqw/1.2 var(--display);font-style:italic;border-left:2px solid var(--ink);padding-left:4cqw;margin-top:4cqw}
+.pgC .q small{display:block;font:500 2.2cqw/1.4 var(--mono);font-style:normal;letter-spacing:.08em;color:var(--graphite);margin-top:2cqw;text-transform:uppercase}
+
+@media (max-width:760px){
+  .cover-meta span:nth-child(2){display:none}
+  .clipped{right:-2%;top:-24%;width:74px}
+  .clipped .print span{font-size:7px}
+  .scriptline{bottom:15vh}
+}
+/* ---------- D · two chairs ---------- */
+#chairs .hwrap{background:#EEEDE9;color:var(--ink)}
+.floor{position:absolute;left:0;right:0;bottom:21vh;height:1px;background:var(--ink);opacity:.25}
+.chairs{position:absolute;left:50%;bottom:calc(21vh - 1px);transform:translateX(-50%);display:flex;gap:min(30vw,380px);z-index:1;pointer-events:none}
+.chairs svg{width:clamp(90px,10vw,140px);height:auto;overflow:visible}
+.chairs path{fill:none;stroke:var(--ink);stroke-width:2;stroke-linecap:round;stroke-linejoin:round}
+.chair-l{transform-origin:50% 100%}.chair-r{transform-origin:50% 100%}
+.clock{position:absolute;right:clamp(16px,4vw,48px);top:clamp(20px,4vh,36px);text-align:right;z-index:3}
+.clock b{display:block;font:400 clamp(40px,5vw,64px)/1 var(--display);font-variant-numeric:tabular-nums}
+.ttl{position:absolute;left:clamp(16px,4vw,48px);top:clamp(20px,4vh,36px);z-index:3}
+#chairs .htrack{padding-left:30vw}
+.qa{flex:none;width:min(62vw,820px);height:100%;position:relative;margin-right:8vw}
+@media (max-width:760px){.qa{width:86vw;margin-right:10vw}#chairs .htrack{padding-left:7vw}}
+.qa .q{position:absolute;left:0;top:20vh;max-width:30ch;font:500 15px/1.45 var(--mono);color:var(--graphite)}
+.qa .q::before{content:"VISITOR";display:block;font-size:10.5px;letter-spacing:.14em;margin-bottom:6px;color:var(--silver)}
+.qa .a{position:absolute;left:0;top:32vh;max-width:24ch;font:400 clamp(28px,3.6vw,52px)/1.08 var(--display)}
+.qa .a em{font-style:italic}
+.qa .a small{display:block;font:500 11px/1.4 var(--mono);letter-spacing:.1em;text-transform:uppercase;color:var(--graphite);margin-top:16px}
+.qa .k{position:relative;white-space:nowrap}
+.qa .k svg{position:absolute;left:-2%;bottom:-.18em;width:104%;height:.4em;overflow:visible}
+.qa .k path{stroke:var(--blue);stroke-width:2.5}
+
+/* ---------- recommendation ---------- */
+.rec{padding-block:clamp(56px,8vw,104px);border-top:1px solid var(--ink)}
+.combo{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:20px}
+@media (max-width:900px){.combo{grid-template-columns:minmax(0,1fr)}}
+.combo div{border-top:2px solid var(--ink);padding-top:16px}
+.combo h3{font:400 30px/1 var(--display);margin:8px 0 10px}
+.combo h3 em{font-style:italic}
+.combo p{font-size:15px;color:var(--graphite)}
+.next{margin-top:44px;display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr);gap:20px 48px}
+@media (max-width:760px){.next{grid-template-columns:minmax(0,1fr)}}
+.next ol{margin:0;padding-left:20px;display:grid;gap:8px}
+footer{padding-block:28px 48px;border-top:1px solid var(--line);color:var(--graphite)}
+
+@media (prefers-reduced-motion:reduce){.draw{transition:none;stroke-dashoffset:0}.rise{opacity:1;transform:none;transition:none}.grease path{transition:none;stroke-dashoffset:0}}
+</style>
+
+<div class="wrap">
+<header class="hero">
+  <div class="meta mono"><span>Aditi Mishra · portfolio · round two</span><span>7 Oct 2026</span><span>Four directions, all live</span></div>
+  <h1>Round <em>two</em><span class="note">black, white &amp; one colour</span></h1>
+  <div class="sub">
+    <p>Four ways to tell Aditi's story in black and white, with colour only where it carries meaning. Each one scrolls sideways. Scroll down into a stage and keep scrolling.</p>
+    <ul class="index">
+      <li><a href="#plates"><b>A</b><span><em>Plates</em></span><i>ink · recommended</i></a></li>
+      <li><a href="#contact"><b>B</b><span>Contact <em>sheet</em></span><i>film · photos</i></a></li>
+      <li><a href="#journalC"><b>C</b><span>The <em>journal</em>, editorial</span><i>the book she liked</i></a></li>
+      <li><a href="#chairs"><b>D</b><span>Two <em>chairs</em></span><i>a conversation</i></a></li>
+    </ul>
+  </div>
+</header>
+
+<section class="brief">
+  <h2>What Aditi <em>said</em>, and what changes</h2>
+  <div class="pairs">
+    <div class="pair"><span class="said">"Too colourful."</span><span class="arr">→</span><span class="does">A black-and-white base. Colour appears only where it means something, and each direction has a reason for its one colour.</span></div>
+    <div class="pair"><span class="said">"Blocky. Childish. Pens and clips lying around."</span><span class="arr">→</span><span class="does">No desk props. Editorial layouts, real typography, her photographs as the main images.</span></div>
+    <div class="pair"><span class="said">"The background beside the book was bad."</span><span class="arr">→</span><span class="does">The space around the content is designed: studio light, paper, film, or ink. Never a cluttered desk.</span></div>
+    <div class="pair"><span class="said">"Transitions too slow."</span><span class="arr">→</span><span class="does">Everything answers within 250–450 ms. Scrolling moves the story directly instead of playing an animation you have to wait for.</span></div>
+    <div class="pair"><span class="said">"The crumpled paper meant nothing."</span><span class="arr">→</span><span class="does">Gone. Every motion now stands for an idea from her field: perception, attention, reflection, conversation.</span></div>
+    <div class="pair"><span class="said">"Loved the book and the illustrations."</span><span class="arr">→</span><span class="does">Kept in every direction: the headset, the tally, the stamp, the Braille, the Gibbs cycle.</span></div>
+    <div class="pair"><span class="said">"Some horizontal scroll."</span><span class="arr">→</span><span class="does">All four directions move sideways as you scroll.</span></div>
+  </div>
+</section>
+
+<section class="found">
+  <h2>One <em>foundation</em> under all four</h2>
+  <div class="fgrid">
+    <div class="fcard f-pal">
+      <h3 class="mono">Palette · mostly ink on paper</h3>
+      <div class="sw">
+        <div><i style="--c:#F3F2EE"></i><b>Paper</b><span>#F3F2EE</span></div>
+        <div><i style="--c:#111110"></i><b>Ink</b><span>#111110</span></div>
+        <div><i style="--c:#5D5C58"></i><b>Graphite</b><span>#5D5C58</span></div>
+        <div><i style="--c:#D6D5D0"></i><b>Studio</b><span>#D6D5D0</span></div>
+        <div class="acc"><i style="--c:#B32B22"></i><b>Plate red</b><span>A · B marks</span></div>
+        <div class="acc"><i style="--c:#C08A2E"></i><b>Film amber</b><span>B · edge print</span></div>
+        <div class="acc"><i style="--c:#24408C"></i><b>Her ink</b><span>C · D · notes</span></div>
+        <div class="acc"><i style="--c:#E3C9C9"></i><b>Pastel</b><span>A · last plates</span></div>
+      </div>
+    </div>
+    <div class="fcard f-type">
+      <h3 class="mono">Type · editorial, like the binder reference</h3>
+      <div class="spec">
+        <span class="d">Aditi <em>Mishra</em></span>
+        <div class="row"><span>Bodoni Moda: display, with its italic for the second word</span><span class="mono" style="color:var(--graphite)">display</span></div>
+        <div class="row"><span style="font-family:var(--body)">Instrument Sans: calm, clear body text at 16px</span><span class="mono" style="color:var(--graphite)">body</span></div>
+        <div class="row"><span class="mono" style="text-transform:none;letter-spacing:.02em;font-size:13px">IBM Plex Mono · dates, labels, plate numbers</span><span class="mono" style="color:var(--graphite)">labels</span></div>
+        <div class="row"><span class="hand" style="font-size:24px;color:var(--blue)">notes in her hand (her own font later)</span><span class="mono" style="color:var(--graphite)">hand</span></div>
+      </div>
+    </div>
+    <div class="fcard f-photo">
+      <h3 class="mono">Her photos · three treatments</h3>
+      <div class="photos">
+        <figure><div class="ph print"></div><figcaption>B&amp;W print, grain</figcaption></figure>
+        <figure><div class="ph halftone"></div><figcaption>Halftone cut-out</figcaption></figure>
+        <figure><div class="ph film"><i></i></div><figcaption>Film frame</figcaption></figure>
+      </div>
+    </div>
+    <div class="fcard f-motion">
+      <h3 class="mono">Motion · fast and meaningful</h3>
+      <ul class="motion">
+        <li><b>250 ms</b>Hovers, links, small reveals</li>
+        <li><b>450 ms</b>Page turns, panels settling</li>
+        <li><b>600 ms</b>A line drawing itself</li>
+        <li><b>direct</b>Scroll moves the story itself: no wait, no autoplay</li>
+        <li><b>meaning</b>Every movement stands for an idea: ink is perception, the loupe is attention, the page turn is reflection, the chairs are conversation</li>
+      </ul>
+    </div>
+  </div>
+</section>
+</div>
+
+<!-- ================= A · PLATES ================= -->
+<section class="variant" id="plates">
+  <div class="wrap v-head">
+    <div class="letter">A</div>
+    <div><span class="mono tag rec">Recommended</span><h2><em>Plates</em></h2></div>
+    <p class="lede">Hermann Rorschach's 1921 cards were <b>mostly black ink, then red, then soft pastels</b>, all folded into mirror symmetry. That gives the brief's "black and white with one colour" a reason that comes from psychology itself. Each part of her story is a plate. Scroll sideways and the ink reshapes. Move your cursor over it and you add mirrored ink.</p>
+  </div>
+  <div class="hwrap" id="platesWrap">
+    <canvas id="inkCanvas" aria-label="A symmetric ink blot that changes as you scroll. Move the pointer to add mirrored ink."></canvas>
+    <div class="htrack">
+      <article class="panel plate" data-seed="1.7" data-red="0" data-pastel="0">
+        <div class="num rise"><b>I</b><span class="mono">About</span></div>
+        <div class="ask rise" style="--d:.15s">what do you see?</div>
+        <div class="cap"><span class="mono rise">Plate I · Navi Mumbai · 2026</span><h3 class="rise" style="--d:.05s">Aditi <em>Mishra</em></h3><p class="rise" style="--d:.1s">Applied Psychology graduate from NMIMS. Training on a mental-health helpline, and heading into a Master's in Counselling.</p></div>
+      </article>
+      <article class="panel plate" data-seed="4.2" data-red="1" data-pastel="0">
+        <div class="num rise"><b>II</b><span class="mono">Practice · now</span></div>
+        <div class="cap"><span class="mono rise">Oct 2025 — now · remote</span><h3 class="rise" style="--d:.05s">Vandrevala <em>Foundation</em></h3><p class="rise" style="--d:.1s">Training and assessments with practising psychologists. Observing counselling and crisis-intervention work on a 24/7 helpline.</p></div>
+        <svg class="ill" viewBox="0 0 200 150" aria-hidden="true"><path class="draw" pathLength="1" d="M50 100 C 46 40, 92 22, 100 22 C 108 22, 154 40, 150 100"/><rect class="draw" pathLength="1" style="--d:.25s" x="36" y="84" width="26" height="40" rx="9"/><rect class="draw" pathLength="1" style="--d:.35s" x="138" y="84" width="26" height="40" rx="9"/><path class="draw red" pathLength="1" style="--d:.5s" d="M146 122 C 142 140, 118 142, 98 136"/><text x="4" y="30">listen first</text></svg>
+      </article>
+      <article class="panel plate" data-seed="7.9" data-red=".6" data-pastel="0">
+        <div class="num rise"><b>III</b><span class="mono">Practice</span></div>
+        <div class="cap"><span class="mono rise">May — Jun 2024 · 45 days · graded Excellent</span><h3 class="rise" style="--d:.05s">Regional Mental <em>Hospital</em>, Thane</h3><p class="rise" style="--d:.1s">Hands-on clinical exposure under Dr Netaji B. Mulik, Medical Superintendent. Then 60 hours at ManoBodh and three months at Therapy4uss.</p></div>
+        <svg class="ill" viewBox="0 0 200 150" aria-hidden="true" id="tallyA"></svg>
+      </article>
+      <article class="panel plate" data-seed="2.6" data-red="0" data-pastel="1">
+        <div class="num rise"><b>IV</b><span class="mono">Care</span></div>
+        <div class="cap"><span class="mono rise">Jul 2025 — Jul 2026 · Mumbai</span><h3 class="rise" style="--d:.05s">Blind &amp; Cancer <em>Care</em></h3><p class="rise" style="--d:.1s">A year of psychosocial support and companionship for patients who are blind, visually impaired or living with cancer.</p></div>
+        <svg class="ill" viewBox="0 0 200 150" aria-hidden="true"><g class="rise" style="--d:.2s"><circle cx="30" cy="60" r="6"/><circle cx="30" cy="96" r="2.5"/><circle cx="30" cy="132" r="2.5"/><circle cx="54" cy="60" r="6"/><circle cx="54" cy="96" r="2.5"/><circle cx="54" cy="132" r="2.5"/><circle cx="84" cy="60" r="6"/><circle cx="84" cy="96" r="2.5"/><circle cx="84" cy="132" r="2.5"/><circle cx="108" cy="60" r="2.5"/><circle cx="108" cy="96" r="2.5"/><circle cx="108" cy="132" r="2.5"/><circle cx="138" cy="60" r="6"/><circle cx="138" cy="96" r="6"/><circle cx="138" cy="132" r="6"/><circle cx="162" cy="60" r="2.5"/><circle cx="162" cy="96" r="6"/><circle cx="162" cy="132" r="2.5"/></g><text x="30" y="26">c · a · r(e) in Braille</text></svg>
+      </article>
+      <article class="panel plate" data-seed="5.3" data-red="0" data-pastel=".8">
+        <div class="num rise"><b>V</b><span class="mono">People</span></div>
+        <div class="cap"><span class="mono rise">Rotaract Navi Mumbai Samaritans · 2025 — 26</span><h3 class="rise" style="--d:.05s">"When people feel safe, they <em>open up</em>."</h3><p class="rise" style="--d:.1s">As Training, Revival &amp; Sustenance Chair she designed Inside the Inbox, a team session on feedback and tone run through emails.</p></div>
+      </article>
+      <article class="panel plate" data-seed="9.1" data-red="0" data-pastel="0">
+        <div class="num rise"><b>VI</b><span class="mono">Write</span></div>
+        <div class="ask rise" style="--d:.15s">your turn</div>
+        <div class="cap"><span class="mono rise">Internships · study · conversations</span><h3 class="rise" style="--d:.05s">Write to <em>Aditi</em></h3><p class="rise" style="--d:.1s">Click any plate on the real site and the ink spreads open into that chapter of her journal.</p></div>
+      </article>
+    </div>
+    <div class="hud" style="color:var(--ink)"><span class="mono" id="plateNo">I / VI</span><span class="bar"><i id="plateBar"></i></span><span class="hint">move over the ink</span></div>
+  </div>
+  <div class="wrap v-notes">
+    <div><h4>Scroll by scroll</h4><ol><li>Plate I: her name beside a black blot, and one question: what do you see?</li><li>Each experience is a plate. Between plates, the ink draws back and opens into a new shape.</li><li>The plates for helpline and hospital add red, as the real cards II and III do. Care and people turn pastel, like cards VIII–X.</li><li>Clicking a plate opens the journal entry.</li></ol></div>
+    <div><h4>Signature moment</h4><p>Your cursor adds ink, mirrored, so every visitor's blot is slightly different. Nobody reads the same plate the same way.</p></div>
+    <div><h4>Why it means something</h4><p>Projective tests are about perception and interpretation, which is a counsellor's core skill. It's used as art, never as a test: the site makes no claims about the visitor.</p></div>
+    <div><h4>Effort · risk</h4><p class="meter">Medium · <em>low</em></p><p>One shader drives all of it, so it runs smoothly on phones too. The risk: if the ink is too large, the site feels moody. Keep it airy, with lots of paper.</p></div>
+  </div>
+</section>
+
+<!-- ================= B · CONTACT SHEET ================= -->
+<section class="variant" id="contact">
+  <div class="wrap v-head">
+    <div class="letter">B</div>
+    <div><span class="mono tag">Photo-led</span><h2>Contact <em>sheet</em></h2></div>
+    <p class="lede">A photographer's contact sheet: every moment as a black-and-white frame on one strip of film. <b>Colour comes back only under the loupe</b>, wherever you look closely. Red grease-pencil marks circle the frames that matter, the way photographers choose their keepers.</p>
+  </div>
+  <div class="hwrap" id="contactWrap">
+    <div class="htrack">
+      <div class="cs-intro"><span class="mono" style="color:var(--graphite)">Roll 01 · 2022 — 2026</span><h3>Look <em>closer</em>.</h3><p>Hover over any frame (or tap on a phone). Placeholder frames until Aditi's photos arrive.</p></div>
+      <div class="strip" id="strip">
+        <span class="edge t">ADITI 400TX  ▸ 2022 — 2026   ▸ 01   ▸ 02   ▸ 03   ▸ 04   ▸ 05   ▸ 06   ▸ 07</span>
+        <span class="edge b">◂ NAVI MUMBAI · THANE · MUMBAI   ◂ PSYCHOLOGY   ◂ COUNSELLING   ◂ 400</span>
+      </div>
+      <div class="cs-end"><p>The colour was there all along. You had to <em>look closely</em>.</p></div>
+    </div>
+    <div class="hud" style="color:var(--ink)"><span class="mono">Frames</span><span class="bar"><i id="contactBar"></i></span><span class="hint">hover a frame</span></div>
+  </div>
+  <div class="wrap v-notes">
+    <div><h4>Scroll by scroll</h4><ol><li>One long roll of film slides past, one frame per moment of her story.</li><li>Captions sit on the paper below, like a photographer's notes.</li><li>Grease-pencil circles land on the keepers as they pass.</li><li>The last frame opens a contact form.</li></ol></div>
+    <div><h4>Signature moment</h4><p>The loupe: a round magnifier that follows the cursor and shows the frame in colour. Black and white everywhere, colour only where you pay attention.</p></div>
+    <div><h4>Why it means something</h4><p>Attention changes what you see, and that's the heart of counselling. The red marks are reflection: choosing what mattered.</p></div>
+    <div><h4>Effort · risk</h4><p class="meter">Low · <em>depends on photos</em></p><p>Simple to build, and it looks expensive. It only works if Aditi sends 8–12 good photos.</p></div>
+  </div>
+</section>
+
+<!-- ================= C · JOURNAL, EDITORIAL ================= -->
+<section class="variant" id="journalC">
+  <div class="wrap v-head">
+    <div class="letter">C</div>
+    <div><span class="mono tag">Keeps what she liked</span><h2>The <em>journal</em>, editorial</h2></div>
+    <p class="lede">The book from round one, which she liked, <b>without the desk</b>. A clean studio backdrop, magazine-style typography that slides behind the book as you scroll, and her photo clipped to the front, as in the binder reference. Pages turn in 450 ms as you scroll.</p>
+  </div>
+  <div class="hwrap" id="journalWrap">
+    <div class="bigtype" id="bigtype">Aditi <em>Mishra</em> — a listening <em>journal</em></div>
+    <div class="cover-meta mono"><span>Portfolio · 2026</span><span>Psychology · Counselling</span><span id="spreadNo">Cover</span></div>
+    <div class="scriptline">her words, her pages</div>
+    <div class="bookstage"><div class="bookholder" id="bookHolder">
+      <div class="clipped"><svg viewBox="0 0 60 40" aria-hidden="true"><path d="M14 14 L46 14 L52 36 L8 36 Z" fill="#141414"/><path d="M20 14 C 18 4, 24 0, 30 0 C 36 0, 42 4, 40 14" fill="none" stroke="#9a9a9a" stroke-width="2.4"/></svg><div class="print"><div class="ph halftone"></div><span>Her photo goes here</span></div></div>
+      <div id="bookC">
+        <div class="pgC coverC" data-density="hard"><div class="lab"><b>AM</b><span>Aditi Mishra · a listening journal</span></div></div>
+        <div class="pgC L"><div class="in" style="display:grid;align-content:center"><div class="ph print" style="aspect-ratio:4/5"></div><span class="k" style="margin-top:3cqw"><span>Navi Mumbai</span><span>2025</span></span></div><div class="fn"><span>About</span><span>1</span></div></div>
+        <div class="pgC R"><div class="in"><span class="k"><span>About</span><span>2026</span></span><h4>Aditi <em>Mishra</em></h4><p>Applied Psychology graduate from NMIMS Navi Mumbai, drawn to the clinical and counselling side of the field.</p><p>Training on a mental-health helpline. Next: a Master's in Counselling, then back to India to practise.</p><p class="blue">start anywhere →</p></div><div class="fn"><span>About</span><span>2</span></div></div>
+        <div class="pgC L"><div class="in"><span class="k"><span>Entry 01 · Practice</span><span>Oct 2025 — now</span></span><h4>Vandrevala <em>Foundation</em></h4><span class="role">Training &amp; hands-on intern · remote</span><p>Training and assessments with practising psychologists; observing crisis-intervention work on a 24/7 helpline.</p><svg viewBox="0 0 200 124" style="width:70%;margin-top:3cqw"><path d="M50 80 C 46 24, 92 8, 100 8 C 108 8, 154 24, 150 80"/><rect x="36" y="66" width="26" height="38" rx="9"/><rect x="138" y="66" width="26" height="38" rx="9"/><path d="M146 102 C 142 116, 118 116, 98 112" style="stroke:var(--blue)"/></svg></div><div class="fn"><span>Practice</span><span>3</span></div></div>
+        <div class="pgC R"><div class="in"><span class="k"><span>Entry 01 · Gibbs' cycle</span></span><div class="stages"><div><b>Feelings</b><span>in her words</span></div><div><b>Evaluation</b><span>in her words</span></div><div><b>Analysis</b><span>in her words</span></div><div><b>Conclusion</b><span>in her words</span></div><div><b>Action plan</b><span>in her words</span></div></div><p style="margin-top:4cqw;color:var(--graphite);font-size:.9em">Nothing about callers, ever.</p></div><div class="fn"><span>Practice</span><span>4</span></div></div>
+        <div class="pgC L"><div class="in"><span class="k"><span>Entry 02 · Practice</span><span>May — Jun 2024</span></span><h4 style="padding-right:28cqw">Regional Mental <em>Hospital</em></h4><span class="role">Observership · 45 days · Thane</span><div class="stamp"><div>THANE<b>EXCELLENT</b>2024</div></div><p style="margin-top:6cqw">Hands-on clinical exposure, graded Excellent.</p><svg id="tallyC" viewBox="0 0 370 40" style="width:100%;margin-top:3cqw"></svg></div><div class="fn"><span>Practice</span><span>5</span></div></div>
+        <div class="pgC R"><div class="in"><span class="k"><span>Entry 03 · Practice</span><span>Oct — Dec 2025</span></span><h4><em>Therapy4uss</em> · A+</h4><span class="role">Intern · 3 months · mock sessions</span><svg viewBox="0 0 300 80" style="width:100%;margin:2cqw 0 3cqw"><path d="M40 70 V34 C40 26 46 22 54 22 H66 C74 22 78 28 78 36 V50 H94 V70 M40 50 H30 V70"/><path d="M260 70 V34 C260 26 254 22 246 22 H234 C226 22 222 28 222 36 V50 H206 V70 M260 50 H270 V70"/></svg><p class="q">"…a safe, non-judgmental space where asking 'silly' questions was encouraged."<small>Aditi · LinkedIn · Jan 2026</small></p></div><div class="fn"><span>Practice</span><span>6</span></div></div>
+        <div class="pgC L"><div class="in"><span class="k"><span>Entry 04 · Care</span><span>2025 — 26</span></span><h4>Blind &amp; Cancer <em>Care</em></h4><span class="role">Patient support volunteer · Mumbai</span><p>Companionship and psychosocial support, mostly by listening.</p><div class="brl" aria-label="care in Braille"><div class="c"><i class="o"></i><i></i><i></i><i class="o"></i><i></i><i></i></div><div class="c"><i class="o"></i><i></i><i></i><i></i><i></i><i></i></div><div class="c"><i class="o"></i><i class="o"></i><i class="o"></i><i></i><i class="o"></i><i></i></div><div class="c"><i class="o"></i><i></i><i></i><i></i><i class="o"></i><i></i></div></div><span class="k"><span>C · A · R · E, in Braille</span><span></span></span></div><div class="fn"><span>Care</span><span>7</span></div></div>
+        <div class="pgC R"><div class="in"><span class="k"><span>Entry 05 · People</span><span>2025 — 26</span></span><h4><em>Rotaract</em> Samaritans</h4><span class="role">Training, Revival &amp; Sustenance Chair</span><p>Designed Inside the Inbox: a team session on feedback and tone, run through emails.</p><p class="q">"When people feel safe, they open up."<small>Aditi · LinkedIn · Jan 2026</small></p></div><div class="fn"><span>People</span><span>8</span></div></div>
+        <div class="pgC coverC" data-density="hard"><div class="lab" style="top:40%"><b style="font-size:9cqw">Write to Aditi</b><span>Tele-MANAS · 14416 · free · 24/7</span></div></div>
+      </div>
+    </div></div>
+    <div class="hud" style="color:var(--ink)"><span class="mono">Pages</span><span class="bar"><i id="journalBar"></i></span><span class="hint">keep scrolling</span></div>
+  </div>
+  <div class="wrap v-notes">
+    <div><h4>Scroll by scroll</h4><ol><li>The closed black journal on a grey studio backdrop, with her name in huge type behind it.</li><li>Scrolling opens it and turns the pages, each in 450 ms.</li><li>The type behind slides sideways, so the whole stage travels left.</li><li>Her photo stays clipped to the book, like the binder reference.</li></ol></div>
+    <div><h4>Signature moment</h4><p>The book itself, now on a quiet stage. One deliberate object, a clipped photo, instead of a desk full of props.</p></div>
+    <div><h4>Why it means something</h4><p>A reflective journal is a real tool in counsellor training, and every entry follows Gibbs' cycle. Red appears once, on the hospital's "Excellent" stamp.</p></div>
+    <div><h4>Effort · risk</h4><p class="meter">Low · <em>low</em></p><p>Builds directly on round one. The risk: it's the most expected of the four.</p></div>
+  </div>
+</section>
+
+<!-- ================= D · TWO CHAIRS ================= -->
+<section class="variant" id="chairs">
+  <div class="wrap v-head">
+    <div class="letter">D</div>
+    <div><span class="mono tag">Her own words</span><h2>Two <em>chairs</em></h2></div>
+    <p class="lede">Counselling is a conversation, so her story is one. A visitor's questions in small type, <b>answered with Aditi's own words from her LinkedIn posts</b>. The two chairs turn toward each other as the session goes on, and the clock counts a 50-minute session.</p>
+  </div>
+  <div class="hwrap" id="chairsWrap">
+    <div class="ttl mono">A session with Aditi Mishra</div>
+    <div class="clock"><span class="mono" style="color:var(--graphite)">Session</span><b id="clock">00:00</b></div>
+    <div class="floor"></div>
+    <div class="chairs" aria-hidden="true">
+      <svg class="chair-l" id="chairL" viewBox="0 0 120 140"><path d="M26 26 C 24 58, 27 84, 36 96 M36 96 H 94 M42 96 L 35 136 M89 96 L 96 136 M31 66 H 82 C 88 66 90 71 88 77 L 84 96"/></svg>
+      <svg class="chair-r" id="chairR" viewBox="0 0 120 140"><g transform="translate(120 0) scale(-1 1)"><path d="M26 26 C 24 58, 27 84, 36 96 M36 96 H 94 M42 96 L 35 136 M89 96 L 96 136 M31 66 H 82 C 88 66 90 71 88 77 L 84 96"/></g></svg>
+    </div>
+    <div class="htrack">
+      <div class="qa"><p class="q rise">What are you doing right now?</p><p class="a rise" style="--d:.06s">Training on a <span class="k">mental-health helpline<svg viewBox="0 0 100 10" preserveAspectRatio="none"><path class="draw" pathLength="1" style="--d:.3s" d="M1 6 C 30 2, 60 9, 99 4"/></svg></span> with the Vandrevala Foundation, and applying for a Master's in <em>Counselling</em>.</p></div>
+      <div class="qa"><p class="q rise">What did your training feel like?</p><p class="a rise" style="--d:.06s">"…a safe, <span class="k">non-judgmental space<svg viewBox="0 0 100 10" preserveAspectRatio="none"><path class="draw" pathLength="1" style="--d:.3s" d="M1 6 C 30 2, 60 9, 99 4"/></svg></span> where asking 'silly' questions was encouraged."<small>On Therapy4uss · Jan 2026</small></p></div>
+      <div class="qa"><p class="q rise">What did leading a team teach you?</p><p class="a rise" style="--d:.06s">"When people feel safe, they <span class="k"><em>open up</em><svg viewBox="0 0 100 10" preserveAspectRatio="none"><path class="draw" pathLength="1" style="--d:.3s" d="M1 6 C 30 2, 60 9, 99 4"/></svg></span>. When they feel valued, they collaborate better."<small>On Inside the Inbox · Jan 2026</small></p></div>
+      <div class="qa"><p class="q rise">Why attachment theory?</p><p class="a rise" style="--d:.06s">"It wasn't labeling, it was <span class="k"><em>clarity</em><svg viewBox="0 0 100 10" preserveAspectRatio="none"><path class="draw" pathLength="1" style="--d:.3s" d="M1 6 C 30 2, 60 9, 99 4"/></svg></span>."<small>On an attachment framework workshop · Jan 2026</small></p></div>
+      <div class="qa"><p class="q rise">Where have you practised?</p><p class="a rise" style="--d:.06s">45 days at the Regional Mental Hospital, Thane, graded <em>Excellent</em>. 60 hours at ManoBodh. A year beside patients at Blind &amp; Cancer Care.</p></div>
+      <div class="qa"><p class="q rise">How do I reach you?</p><p class="a rise" style="--d:.06s">Write to me. <em>I'll listen.</em><small>Contact form on the real site</small></p></div>
+    </div>
+    <div class="hud" style="color:var(--ink)"><span class="mono">Session</span><span class="bar"><i id="chairsBar"></i></span><span class="hint">keep scrolling</span></div>
+  </div>
+  <div class="wrap v-notes">
+    <div><h4>Scroll by scroll</h4><ol><li>Two empty chairs on a quiet floor line.</li><li>Each question appears small; her answer arrives large in her own words.</li><li>The chairs slowly turn toward each other.</li><li>The session clock reaches 50:00 at the contact panel.</li></ol></div>
+    <div><h4>Signature moment</h4><p>The chairs turning: rapport, shown with two line drawings and nothing else.</p></div>
+    <div><h4>Why it means something</h4><p>The 50-minute hour and the two-chair setting are the real shape of a session, and every answer is a real quote of hers.</p></div>
+    <div><h4>Effort · risk</h4><p class="meter">Low · <em>medium</em></p><p>Cheap to build and very human. It depends on Aditi writing a few more answers in her own voice.</p></div>
+  </div>
+</section>
+
+<section class="rec">
+  <div class="wrap">
+    <h2>My <em>recommendation</em></h2>
+    <div class="combo">
+      <div><span class="mono">Home &amp; navigation</span><h3><em>Plates</em> (A)</h3><p>The most distinctive, the most psychology-native, and the clearest answer to "black and white, but colourful": the colour comes in with the plates.</p></div>
+      <div><span class="mono">Reading each experience</span><h3>The <em>journal</em> (C)</h3><p>Click a plate and the ink spreads open into that entry of the editorial journal she already liked, with the illustrations kept.</p></div>
+      <div><span class="mono">About · when her photos arrive</span><h3>Contact <em>sheet</em> (B) or Two <em>chairs</em> (D)</h3><p>One strip of her photos with the loupe, or a short conversation in her own words. Either works as a small section.</p></div>
+    </div>
+    <div class="next">
+      <div><span class="mono" style="color:var(--graphite)">What I need</span><ol><li>Aditi's pick (or her mix) of A–D.</li><li>8–12 photos she's happy to use. Black and white is fine; I'll treat them.</li><li>One page of her handwriting for the note font.</li></ol></div>
+      <div><span class="mono" style="color:var(--graphite)">Then</span><ol><li>I build the chosen mix as the next playable prototype, at full speed.</li><li>Same link for her to review on her phone.</li></ol></div>
+    </div>
+  </div>
+</section>
+
+<footer><div class="wrap mono">Round one (the desk journal) stays available as a comparison. Copy is drafted from Aditi's LinkedIn; quotes marked as hers are her own words.</div></footer>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js"></script>
+<script src="https://unpkg.com/lenis@1.1.13/dist/lenis.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/page-flip@2.0.7/dist/js/page-flip.browser.js"></script>
+<script>
+(() => {
+const $ = (s, r = document) => r.querySelector(s), $$ = (s, r = document) => [...r.querySelectorAll(s)];
+const reduce = matchMedia('(prefers-reduced-motion: reduce)').matches;
+const small = innerWidth < 760;
+if (!window.gsap || !window.ScrollTrigger) return;
+gsap.registerPlugin(ScrollTrigger);
+
+/* one clock: Lenis smooth scroll drives ScrollTrigger from GSAP's ticker */
+let lenis = null;
+if (!reduce && window.Lenis && !/nolenis/.test(location.search)) {
+  lenis = new Lenis({ lerp: .14, smoothWheel: true });
+  lenis.on('scroll', ScrollTrigger.update);
+  gsap.ticker.add((t) => lenis.raf(t * 1000));
+  gsap.ticker.lagSmoothing(0);
+  $$('a[href^="#"]').forEach((a) => a.addEventListener('click', (e) => { const t = $(a.getAttribute('href')); if (t) { e.preventDefault(); lenis.scrollTo(t, { offset: 0, duration: 1 }); } }));
+}
+
+/* a pinned stage whose track slides sideways as you scroll down */
+function horizontal(wrap, opts = {}) {
+  const snap = opts.snap && !reduce ? { snapTo: opts.snap, duration: { min: .2, max: .45 }, ease: 'power2.out', delay: .08 } : false;
+  const track = $('.htrack', wrap);
+  const dist = () => Math.max(1, track.scrollWidth - wrap.clientWidth);
+  const tween = gsap.to(track, {
+    x: () => -dist(), ease: 'none',
+    scrollTrigger: {
+      trigger: wrap, start: 'top top', end: () => '+=' + (opts.length ? opts.length() : dist()), pin: true, scrub: reduce ? true : .35, snap,
+      invalidateOnRefresh: true, anticipatePin: 1, onUpdate: (st) => opts.onUpdate && opts.onUpdate(st.progress), onToggle: (st) => opts.onToggle && opts.onToggle(st.isActive)
+    }
+  });
+  return tween;
+}
+// panels light up (and their lines draw) as they reach the middle of the screen
+function activate(tween, els, start = 'left 65%', end = 'right 35%') {
+  els.forEach((el) => ScrollTrigger.create({ trigger: el, containerAnimation: tween, start, end, toggleClass: { targets: el, className: 'on' } }));
+}
+
+/* ---------------- A · plates: one shader, scroll-scrubbed ---------------- */
+(() => {
+  const wrap = $('#platesWrap'), canvas = $('#inkCanvas'), plates = $$('.plate', wrap);
+  const N = plates.length, seeds = plates.map((p) => +p.dataset.seed), reds = plates.map((p) => +p.dataset.red), pastels = plates.map((p) => +p.dataset.pastel);
+  const romans = ['I', 'II', 'III', 'IV', 'V', 'VI', 'VII'];
+  const gl = canvas.getContext('webgl', { antialias: false, alpha: false, preserveDrawingBuffer: false });
+  const st = { mix: 0, a: 0, bloom: reduce ? 1 : 0, dirty: true, active: false };
+  const trail = new Float32Array(24); let trailHead = 0;
+  let prog = null, U = {};
+  if (gl) {
+    const vs = 'attribute vec2 a;void main(){gl_Position=vec4(a,0.,1.);}';
+    const fs = `precision highp float;
+uniform vec2 uRes;uniform float uSeedA,uSeedB,uMix,uBloom,uRedA,uRedB,uPasA,uPasB;uniform vec3 uTrail[8];
+float h(vec2 p){return fract(sin(dot(p,vec2(127.1,311.7)))*43758.5453);}
+float n(vec2 p){vec2 i=floor(p),f=fract(p);vec2 u=f*f*(3.-2.*f);return mix(mix(h(i),h(i+vec2(1,0)),u.x),mix(h(i+vec2(0,1)),h(i+vec2(1,1)),u.x),u.y);}
+float fbm(vec2 p){float v=0.,a=.5;for(int i=0;i<5;i++){v+=a*n(p);p=p*2.03+vec2(1.7,9.2);a*=.5;}return v;}
+float blot(vec2 p,float s){vec2 q=vec2(abs(p.x),p.y); /* folded in half: mirror symmetry */
+  float body=fbm(q*2.1+s*7.31);float det=fbm(q*6.5+s*3.17+4.);float r=length(vec2(q.x*1.05,q.y*.92));
+  return body*1.3+det*.24-r*1.15;}
+void main(){
+  float sc=uRes.x<uRes.y?2.1:1.55; vec2 p=(gl_FragCoord.xy-.5*uRes)/uRes.y*sc; p.y-=.1;
+  float m=smoothstep(0.,1.,uMix);
+  float f=mix(blot(p,uSeedA),blot(p,uSeedB),m);
+  for(int i=0;i<8;i++){vec3 t=uTrail[i];float d1=length(p-t.xy),d2=length(p-vec2(-t.x,t.y));f+=t.z*(exp(-d1*d1*40.)+exp(-d2*d2*40.))*.3;}
+  float recede=1.-.42*sin(3.14159*m); /* between plates the ink draws back, then opens */
+  float thr=mix(.95,.36,uBloom*recede);
+  float edge=(fbm(p*22.+9.)-.5)*.05;
+  float ink=smoothstep(thr-.012,thr+.012,f+edge);
+  float dens=smoothstep(thr,thr+.4,f);
+  vec3 paper=vec3(.953,.949,.933)-h(gl_FragCoord.xy*.73)*.03;
+  vec3 col=paper;
+  float red=mix(uRedA,uRedB,m);
+  float fr=0.; if(red>.001) fr=mix(blot(p*1.45+vec2(0.,.28),uSeedA+11.),blot(p*1.45+vec2(0.,.28),uSeedB+11.),m)-.06;
+  if(red>.001) col=mix(col,vec3(.70,.17,.13)-dens*.08,smoothstep(thr-.012,thr+.012,fr)*red*.95);
+  float pas=mix(uPasA,uPasB,m);
+  if(pas>.001){
+    float fp1=mix(blot(p*1.25+vec2(.0,-.32),uSeedA+23.),blot(p*1.25+vec2(.0,-.32),uSeedB+23.),m);
+    float fp2=mix(blot(p*1.6+vec2(0.,.38),uSeedA+31.),blot(p*1.6+vec2(0.,.38),uSeedB+31.),m);
+    col=mix(col,vec3(.89,.76,.77),smoothstep(thr-.015,thr+.015,fp1)*pas*.9);
+    col=mix(col,vec3(.70,.80,.80),smoothstep(thr-.015,thr+.015,fp2)*pas*.8);
+  }
+  vec3 inkCol=mix(vec3(.2,.2,.19),vec3(.045,.045,.04),dens);
+  col=mix(col,inkCol,ink*(1.-pas*.55));
+  gl_FragColor=vec4(col,1.);}`;
+    const sh = (t, s) => { const o = gl.createShader(t); gl.shaderSource(o, s); gl.compileShader(o); if (!gl.getShaderParameter(o, gl.COMPILE_STATUS)) console.warn(gl.getShaderInfoLog(o)); return o; };
+    prog = gl.createProgram(); gl.attachShader(prog, sh(gl.VERTEX_SHADER, vs)); gl.attachShader(prog, sh(gl.FRAGMENT_SHADER, fs)); gl.linkProgram(prog); gl.useProgram(prog);
+    const b = gl.createBuffer(); gl.bindBuffer(gl.ARRAY_BUFFER, b); gl.bufferData(gl.ARRAY_BUFFER, new Float32Array([-1, -1, 3, -1, -1, 3]), gl.STATIC_DRAW);
+    const loc = gl.getAttribLocation(prog, 'a'); gl.enableVertexAttribArray(loc); gl.vertexAttribPointer(loc, 2, gl.FLOAT, false, 0, 0);
+    ['uRes', 'uSeedA', 'uSeedB', 'uMix', 'uBloom', 'uRedA', 'uRedB', 'uPasA', 'uPasB', 'uTrail'].forEach((k) => U[k] = gl.getUniformLocation(prog, k));
+  }
+  const quality = small ? .55 : .8;
+  function resize() {
+    const r = wrap.getBoundingClientRect(), dpr = Math.min(devicePixelRatio || 1, 2) * quality;
+    canvas.width = Math.max(1, Math.round(r.width * dpr)); canvas.height = Math.max(1, Math.round(r.height * dpr)); st.dirty = true;
+  }
+  addEventListener('resize', resize); resize();
+  function render() {
+    if (!gl || !st.active) return;
+    let decaying = false;
+    for (let i = 0; i < 8; i++) { const z = trail[i * 3 + 2]; if (z > .002) { trail[i * 3 + 2] = z * .965; decaying = true; } }
+    if (!st.dirty && !decaying) return;
+    st.dirty = false;
+    const a = Math.min(N - 1, Math.floor(st.a)), b = Math.min(N - 1, a + 1), m = st.a - a;
+    gl.viewport(0, 0, canvas.width, canvas.height);
+    gl.uniform2f(U.uRes, canvas.width, canvas.height);
+    gl.uniform1f(U.uSeedA, seeds[a]); gl.uniform1f(U.uSeedB, seeds[b]); gl.uniform1f(U.uMix, m);
+    gl.uniform1f(U.uBloom, st.bloom); gl.uniform1f(U.uRedA, reds[a]); gl.uniform1f(U.uRedB, reds[b]); gl.uniform1f(U.uPasA, pastels[a]); gl.uniform1f(U.uPasB, pastels[b]);
+    gl.uniform3fv(U.uTrail, trail);
+    gl.drawArrays(gl.TRIANGLES, 0, 3);
+  }
+  gsap.ticker.add(render);
+  const tween = horizontal(wrap, {
+    onUpdate: (p) => { st.a = p * (N - 1); st.dirty = true; const i = Math.round(st.a); $('#plateNo').textContent = romans[i] + ' / ' + romans[N - 1]; gsap.set('#plateBar', { scaleX: p }); },
+    onToggle: (on) => { st.active = on; st.dirty = true; if (on && st.bloom < 1) gsap.to(st, { bloom: 1, duration: .9, ease: 'expo.out', onUpdate: () => (st.dirty = true) }); }
+  });
+  activate(tween, plates);
+  // visitors add mirrored ink with the pointer
+  let last = 0;
+  wrap.addEventListener('pointermove', (e) => {
+    const now = performance.now(); if (now - last < 28) return; last = now;
+    const r = canvas.getBoundingClientRect();
+    const sc = r.width < r.height ? 2.1 : 1.55, x = ((e.clientX - r.left) - r.width / 2) / r.height * sc, y = ((r.height / 2 - (e.clientY - r.top)) / r.height) * sc + .1;
+    trail[trailHead * 3] = x; trail[trailHead * 3 + 1] = y; trail[trailHead * 3 + 2] = 1; trailHead = (trailHead + 1) % 8; st.dirty = true;
+  });
+  // tally for plate III, drawn like real tally marks
+  const t = $('#tallyA'); let s = '', k = 0, x = 6;
+  for (let g = 0; g < 4; g++) { for (let j = 0; j < 4; j++) { const xx = x + j * 9; s += `<path class="draw" pathLength="1" style="--d:${(.2 + k * .045).toFixed(2)}s" d="M${xx} ${70 + Math.random() * 3} L ${xx + 1} ${110 + Math.random() * 3}"/>`; k++; } s += `<path class="draw red" pathLength="1" style="--d:${(.2 + k * .045).toFixed(2)}s" d="M${x - 5} 104 L ${x + 33} 76"/>`; k++; x += 48; }
+  t.innerHTML = s + '<text x="6" y="40">45 days, one mark each</text>';
+})();
+
+/* ---------------- B · contact sheet ---------------- */
+(() => {
+  const wrap = $('#contactWrap'), strip = $('#strip');
+  const frames = [
+    { kind: 'portrait', no: '01', mono: 'About · Navi Mumbai', t: 'Aditi <em>Mishra</em>', note: 'keeper', mark: 'circle' },
+    { kind: 'lamp', no: '02', mono: 'Oct 2025 — now', t: 'Vandrevala <em>helpline</em>', note: 'now', mark: 'box' },
+    { kind: 'corridor', no: '03', mono: 'May — Jun 2024', t: 'Regional Mental <em>Hospital</em>', note: 'excellent', mark: 'circle' },
+    { kind: 'chairs', no: '04', mono: 'Oct — Dec 2025', t: '<em>Therapy4uss</em> · A+', note: '', mark: '' },
+    { kind: 'window', no: '05', mono: '2025 — 26 · Mumbai', t: 'Blind &amp; Cancer <em>Care</em>', note: 'this one', mark: 'box' },
+    { kind: 'group', no: '06', mono: 'Rotaract · 2025 — 26', t: 'Inside the <em>Inbox</em>', note: '', mark: '' },
+    { kind: 'notebook', no: '07', mono: 'Write to Aditi', t: 'Your <em>letter</em>', note: 'last frame', mark: 'circle' }
+  ];
+  const rnd = (a, b) => a + Math.random() * (b - a);
+  // procedural "photographs": soft light, grain and vignette, so placeholders read as film rather than icons
+  function paint(ctx, W, H, kind) {
+    const g = (x0, y0, r0, x1, y1, r1, stops) => { const gr = ctx.createRadialGradient(x0, y0, r0, x1, y1, r1); stops.forEach(([o, c]) => gr.addColorStop(o, c)); return gr; };
+    const lin = (x0, y0, x1, y1, stops) => { const gr = ctx.createLinearGradient(x0, y0, x1, y1); stops.forEach(([o, c]) => gr.addColorStop(o, c)); return gr; };
+    if (kind === 'portrait') {
+      ctx.fillStyle = lin(0, 0, W, 0, [[0, '#e9d9c4'], [.5, '#a88c72'], [1, '#3c3029']]); ctx.fillRect(0, 0, W, H);
+      ctx.fillStyle = g(W * .28, H * .3, 10, W * .28, H * .3, W * .5, [[0, 'rgba(255,240,215,.75)'], [1, 'rgba(255,240,215,0)']]); ctx.fillRect(0, 0, W, H);
+      ctx.fillStyle = g(W * .5, H * 1.05, 10, W * .5, H * 1.05, W * .34, [[0, '#2b2d3b'], [.85, '#2b2d3b'], [1, 'rgba(43,45,59,0)']]); ctx.fillRect(0, 0, W, H);
+      ctx.fillStyle = g(W * .5, H * .42, 4, W * .5, H * .42, H * .24, [[0, '#d7a383'], [.75, '#b07a5c'], [1, 'rgba(120,80,60,0)']]); ctx.fillRect(0, 0, W, H);
+      ctx.fillStyle = g(W * .5, H * .3, 4, W * .5, H * .32, H * .26, [[0, '#1e1712'], [.7, '#1e1712'], [1, 'rgba(30,23,18,0)']]); ctx.fillRect(0, 0, W, H * .36);
+    } else if (kind === 'lamp') {
+      ctx.fillStyle = '#17130f'; ctx.fillRect(0, 0, W, H);
+      ctx.fillStyle = g(W * .7, H * .3, 4, W * .7, H * .3, W * .55, [[0, 'rgba(255,196,120,.9)'], [.3, 'rgba(200,120,50,.35)'], [1, 'rgba(0,0,0,0)']]); ctx.fillRect(0, 0, W, H);
+      for (let i = 0; i < 9; i++) { const x = rnd(0, W), y = rnd(0, H * .6), r = rnd(10, 34); ctx.fillStyle = g(x, y, 0, x, y, r, [[0, `rgba(255,${rnd(170, 220) | 0},140,.35)`], [1, 'rgba(0,0,0,0)']]); ctx.fillRect(x - r, y - r, r * 2, r * 2); }
+      ctx.fillStyle = lin(0, H * .72, 0, H, [[0, '#3a2a1c'], [1, '#120d09']]); ctx.fillRect(0, H * .72, W, H * .28);
+      ctx.strokeStyle = 'rgba(250,235,210,.85)'; ctx.lineWidth = 3; ctx.beginPath(); ctx.moveTo(W * .3, H * .66); ctx.bezierCurveTo(W * .3, H * .38, W * .5, H * .3, W * .55, H * .3); ctx.bezierCurveTo(W * .6, H * .3, W * .8, H * .38, W * .8, H * .66); ctx.stroke();
+      ctx.strokeRect(W * .26, H * .6, W * .08, H * .16); ctx.strokeRect(W * .76, H * .6, W * .08, H * .16);
+    } else if (kind === 'corridor') {
+      ctx.fillStyle = '#cfd6d2'; ctx.fillRect(0, 0, W, H);
+      const vx = W * .55, vy = H * .45;
+      ctx.fillStyle = lin(0, 0, 0, H, [[0, '#9fb0aa'], [1, '#56625e']]); ctx.beginPath(); ctx.moveTo(0, 0); ctx.lineTo(vx - 40, vy - 30); ctx.lineTo(vx - 40, vy + 30); ctx.lineTo(0, H); ctx.fill();
+      ctx.fillStyle = lin(0, 0, 0, H, [[0, '#b7c2bd'], [1, '#6a7570']]); ctx.beginPath(); ctx.moveTo(W, 0); ctx.lineTo(vx + 40, vy - 30); ctx.lineTo(vx + 40, vy + 30); ctx.lineTo(W, H); ctx.fill();
+      ctx.fillStyle = lin(0, vy, 0, H, [[0, '#8d8a7e'], [1, '#3d3a33']]); ctx.beginPath(); ctx.moveTo(0, H); ctx.lineTo(vx - 40, vy + 30); ctx.lineTo(vx + 40, vy + 30); ctx.lineTo(W, H); ctx.fill();
+      ctx.fillStyle = g(vx, vy, 2, vx, vy, 120, [[0, 'rgba(255,252,236,1)'], [1, 'rgba(255,252,236,0)']]); ctx.fillRect(0, 0, W, H);
+      ctx.fillStyle = '#fffbea'; ctx.fillRect(vx - 40, vy - 30, 80, 60);
+      ctx.strokeStyle = 'rgba(40,40,35,.35)'; ctx.lineWidth = 2; for (let i = 1; i < 5; i++) { const t = i / 5; ctx.beginPath(); ctx.moveTo(t * (vx - 40), vy - 30 * t - (1 - t) * 0 + (1 - t) * 0); ctx.lineTo(t * (vx - 40), H - (H - vy - 30) * t); ctx.stroke(); }
+    } else if (kind === 'chairs') {
+      ctx.fillStyle = lin(0, 0, W, 0, [[0, '#f2e7d3'], [1, '#b49f86']]); ctx.fillRect(0, 0, W, H);
+      ctx.fillStyle = 'rgba(255,250,236,.8)'; ctx.fillRect(W * .38, H * .1, W * .24, H * .48);
+      ctx.fillStyle = lin(0, H * .7, 0, H, [[0, '#8a6f55'], [1, '#4a3a2c']]); ctx.fillRect(0, H * .72, W, H * .28);
+      const chair = (x, flip, c) => { ctx.save(); ctx.translate(x, H * .74); ctx.scale(flip, 1); ctx.fillStyle = c; ctx.beginPath(); ctx.moveTo(-40, 0); ctx.lineTo(-40, -70); ctx.quadraticCurveTo(-40, -95, -15, -95); ctx.lineTo(10, -95); ctx.quadraticCurveTo(30, -95, 30, -70); ctx.lineTo(30, -38); ctx.lineTo(60, -38); ctx.lineTo(60, 0); ctx.closePath(); ctx.fill(); ctx.restore(); };
+      chair(W * .26, 1, '#5a4636'); chair(W * .74, -1, '#3f4a52');
+    } else if (kind === 'window') {
+      ctx.fillStyle = '#efe6d8'; ctx.fillRect(0, 0, W, H);
+      ctx.fillStyle = g(W * .65, H * .35, 10, W * .65, H * .35, W * .6, [[0, 'rgba(255,248,232,1)'], [1, 'rgba(200,180,150,.2)']]); ctx.fillRect(0, 0, W, H);
+      ctx.fillStyle = 'rgba(120,98,70,.55)'; for (let i = 0; i < 6; i++) ctx.fillRect(W * .45 + i * 24, H * .08, 4, H * .62);
+      ctx.fillStyle = g(W * .32, H * .7, 4, W * .32, H * .7, H * .32, [[0, 'rgba(160,110,90,.75)'], [1, 'rgba(160,110,90,0)']]); ctx.fillRect(0, 0, W, H);
+      ctx.fillStyle = g(W * .45, H * .66, 4, W * .45, H * .66, H * .22, [[0, 'rgba(206,160,130,.85)'], [1, 'rgba(206,160,130,0)']]); ctx.fillRect(0, 0, W, H);
+    } else if (kind === 'group') {
+      ctx.fillStyle = lin(0, 0, 0, H, [[0, '#d9c5a6'], [1, '#6d5944']]); ctx.fillRect(0, 0, W, H);
+      for (let i = 0; i < 6; i++) { const x = W * (.1 + i * .16) + rnd(-8, 8), y = H * (.5 + rnd(-.05, .05)); const c = ['#3d3530', '#5a3d36', '#2e3640', '#4a4031', '#33302c', '#523b44'][i];
+        ctx.fillStyle = g(x, y + H * .38, 4, x, y + H * .38, H * .3, [[0, c], [.8, c], [1, 'rgba(0,0,0,0)']]); ctx.fillRect(x - H * .3, y, H * .6, H * .7);
+        ctx.fillStyle = g(x, y, 2, x, y, H * .1, [[0, '#c48f70'], [.8, '#a47458'], [1, 'rgba(160,110,85,0)']]); ctx.fillRect(x - H * .12, y - H * .12, H * .24, H * .24); }
+    } else if (kind === 'notebook') {
+      ctx.fillStyle = '#6b5d4e'; ctx.fillRect(0, 0, W, H);
+      ctx.save(); ctx.translate(W * .5, H * .52); ctx.rotate(-.08); ctx.fillStyle = '#f6f1e6'; ctx.fillRect(-W * .32, -H * .4, W * .64, H * .8);
+      ctx.strokeStyle = 'rgba(120,150,200,.5)'; ctx.lineWidth = 1.5; for (let y = -H * .3; y < H * .38; y += 18) { ctx.beginPath(); ctx.moveTo(-W * .3, y); ctx.lineTo(W * .3, y); ctx.stroke(); }
+      ctx.strokeStyle = '#2a3d74'; ctx.lineWidth = 2.4; for (let l = 0; l < 6; l++) { const y = -H * .3 + l * 18 - 3; ctx.beginPath(); ctx.moveTo(-W * .27, y); for (let x = -W * .27; x < W * (.12 + (l % 3) * .05); x += 7) ctx.lineTo(x, y + Math.sin(x * .9) * 3 - Math.random() * 3); ctx.stroke(); }
+      ctx.restore();
+    }
+    // grain and vignette
+    const id = ctx.getImageData(0, 0, W, H), d = id.data;
+    for (let i = 0; i < d.length; i += 4) { const k = (Math.random() - .5) * 26; d[i] += k; d[i + 1] += k; d[i + 2] += k; }
+    ctx.putImageData(id, 0, 0);
+    ctx.fillStyle = g(W / 2, H / 2, H * .3, W / 2, H / 2, W * .7, [[0, 'rgba(0,0,0,0)'], [1, 'rgba(0,0,0,.45)']]); ctx.fillRect(0, 0, W, H);
+  }
+  const gpath = (type) => type === 'box'
+    ? 'M3 7 C 30 3, 70 4, 97 6 C 99 30, 98 70, 96 95 C 70 98, 30 97, 4 95 C 2 70, 3 30, 5 4'
+    : 'M50 2 C 80 1, 99 22, 98 50 C 97 80, 76 99, 48 98 C 20 97, 1 78, 3 48 C 4 22, 24 4, 56 3';
+  frames.forEach((f) => {
+    const el = document.createElement('div'); el.className = 'fr'; el.setAttribute('role', 'img'); el.setAttribute('aria-label', f.t.replace(/<[^>]+>/g, '') + ', placeholder photo');
+    const W = 600, H = 400, c1 = document.createElement('canvas'); c1.width = W; c1.height = H; c1.className = 'bw';
+    paint(c1.getContext('2d'), W, H, f.kind);
+    const lens = document.createElement('div'); lens.className = 'lens'; const c2 = document.createElement('canvas'); c2.width = W; c2.height = H; c2.getContext('2d').drawImage(c1, 0, 0); lens.appendChild(c2);
+    const ring = document.createElement('div'); ring.className = 'ring';
+    el.append(c1, lens, ring);
+    el.insertAdjacentHTML('beforeend', `<span class="no">${f.no} ▸</span>${f.mark ? `<svg class="grease" viewBox="0 0 100 100" preserveAspectRatio="none"><path pathLength="1" vector-effect="non-scaling-stroke" d="${gpath(f.mark)}"/></svg>` : ''}<div class="cs-caps"><span class="mono">${f.mono}</span><b>${f.t}</b>${f.note ? `<span class="hand">${f.note}</span>` : ''}</div>`);
+    strip.appendChild(el);
+    // the loupe: colour only where you look closely
+    const set = (e) => { const r = el.getBoundingClientRect(); el.style.setProperty('--mx', (e.clientX - r.left) + 'px'); el.style.setProperty('--my', (e.clientY - r.top) + 'px'); };
+    el.addEventListener('pointerenter', (e) => { set(e); gsap.to(el, { '--r': (small ? 56 : 78) + 'px', duration: .25, ease: 'expo.out' }); });
+    el.addEventListener('pointermove', set);
+    el.addEventListener('pointerleave', () => gsap.to(el, { '--r': '0px', duration: .2, ease: 'power2.in' }));
+    el.addEventListener('pointerdown', (e) => { if (e.pointerType !== 'mouse') { set(e); gsap.fromTo(el, { '--r': '0px' }, { '--r': '64px', duration: .25, ease: 'expo.out', yoyo: true, repeat: 1, repeatDelay: 1.1 }); } });
+  });
+  strip.style.marginBottom = '96px';
+  const tween = horizontal(wrap, { onUpdate: (p) => gsap.set('#contactBar', { scaleX: p }) });
+  activate(tween, $$('.fr', wrap), 'left 70%', 'right 20%');
+})();
+
+/* ---------------- C · journal, editorial ---------------- */
+(() => {
+  const wrap = $('#journalWrap'), bookEl = $('#bookC'), holder = $('#bookHolder');
+  // tally inside the journal
+  const t = $('#tallyC'); let s = '', k = 0, x = 6;
+  for (let g = 0; g < 9; g++) { for (let j = 0; j < 4; j++) { const xx = x + j * 7; s += `<path d="M${xx} ${6 + Math.random() * 2} L ${xx + 1} ${34 + Math.random() * 2}" style="stroke-width:2"/>`; k++; } s += `<path d="M${x - 4} 30 L ${x + 26} 9" style="stroke-width:2"/>`; x += 40; }
+  t.innerHTML = s;
+  const size = () => {
+    const H = innerHeight, W = innerWidth;
+    let pw = Math.min(380, (W * .8) / 2, H * .62 * .72); const land = pw >= 220;
+    if (!land) pw = Math.min(360, W * .74, H * .6 * .72);
+    pw = Math.floor(pw); const ph = Math.floor(pw / .72);
+    bookEl.style.width = (land ? pw * 2 : pw) + 'px'; bookEl.style.height = ph + 'px';
+  };
+  size();
+  if (!window.St || !St.PageFlip) return;
+  $$('.pgC', bookEl).forEach((p, i) => { if (!p.classList.contains('coverC')) p.classList.add(i % 2 ? 'L' : 'R'); });
+  const book = new St.PageFlip(bookEl, { width: 380, height: 528, size: 'stretch', minWidth: 220, maxWidth: 400, minHeight: 300, maxHeight: 560, showCover: true, usePortrait: true, autoSize: false, maxShadowOpacity: .35, mobileScrollSupport: false, flippingTime: reduce ? 200 : 450, showPageCorners: false });
+  book.loadFromHTML($$('.pgC', bookEl));
+  const total = book.getPageCount();
+  let flipping = false, want = 0;
+  book.on('changeState', (e) => { flipping = e.data !== 'read'; if (!flipping) settle(); });
+  const spreadOf = (i) => (book.getOrientation() === 'portrait' ? i : i === 0 ? 0 : Math.ceil(i / 2));
+  const pageOf = (s) => (book.getOrientation() === 'portrait' ? s : s === 0 ? 0 : Math.min(total - 1, s * 2 - 1));
+  const spreads = () => (book.getOrientation() === 'portrait' ? total : Math.ceil((total - 1) / 2) + 1);
+  // scroll sets the page we want; turns happen one at a time, fast, until we arrive
+  function settle() {
+    if (flipping) return;
+    const cur = spreadOf(book.getCurrentPageIndex()), land = book.getOrientation() !== 'portrait', idx = book.getCurrentPageIndex();
+    holder.classList.toggle('at-cover', land && idx === 0); holder.classList.toggle('at-back', land && idx >= total - 1);
+    holder.style.transform = land && idx === 0 ? 'translateX(-25%)' : land && idx >= total - 1 ? 'translateX(25%)' : '';
+    if (want > cur) book.flipNext(); else if (want < cur) book.flipPrev();
+    const labels = ['Cover', 'About', 'Vandrevala', 'Hospital · Therapy4uss', 'Care · People', 'Write'];
+    $('#spreadNo').textContent = book.getOrientation() === 'portrait' ? 'Page ' + (book.getCurrentPageIndex() + 1) : labels[Math.min(labels.length - 1, cur)] || '';
+  }
+  horizontal(wrap, {
+    length: () => innerHeight * 3.2,
+    onUpdate: (p) => {
+      gsap.set('#journalBar', { scaleX: p });
+      gsap.set('#bigtype', { x: () => -p * Math.max(0, $('#bigtype').scrollWidth - innerWidth * .6) + innerWidth * .08 });
+      const n = spreads(); want = Math.min(n - 1, Math.round(p * (n - 1) * 1.02)); settle();
+    }
+  });
+  addEventListener('resize', () => { size(); book.getUI && book.getUI().update && book.getUI().update(); });
+})();
+
+/* ---------------- D · two chairs ---------------- */
+(() => {
+  const wrap = $('#chairsWrap');
+  const tween = horizontal(wrap, {
+    onUpdate: (p) => {
+      gsap.set('#chairsBar', { scaleX: p });
+      const sec = Math.round(p * 50 * 60), mm = String(Math.floor(sec / 60)).padStart(2, '0'), ss = String(sec % 60).padStart(2, '0');
+      $('#clock').textContent = `${mm}:${ss}`;
+      // the chairs draw closer as the session goes on
+      const near = Math.min(innerWidth * .11, 150) * p;
+      gsap.set('#chairL', { x: near }); gsap.set('#chairR', { x: -near });
+    }
+  });
+  activate(tween, $$('.qa', wrap), 'left 75%', 'right 25%');
+})();
+
+addEventListener('load', () => ScrollTrigger.refresh());
+// test hook for headless screenshots: ?shot=platesWrap:0.4 jumps into a stage
+const shot = new URLSearchParams(location.search).get('shot');
+const yy = new URLSearchParams(location.search).get('y'); if (yy) addEventListener('load', () => setTimeout(() => { if (lenis) lenis.stop(); window.scrollTo(0, +yy); }, 700));
+if (shot) addEventListener('load', () => setTimeout(() => { const [id, f] = shot.split(':'); const st = ScrollTrigger.getAll().find((t) => t.pin && t.trigger.id === id); if (!st) return; if (lenis) lenis.stop(); window.scrollTo(0, st.start + (st.end - st.start) * +f); ScrollTrigger.update(); }, 700));
+document.fonts && document.fonts.ready.then(() => ScrollTrigger.refresh());
+})();
+</script>
+
+</body>
+</html>
